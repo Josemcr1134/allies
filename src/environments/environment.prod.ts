@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  base_url: 'https://netcareapi.devblackhost.com/api'
+  base_url: 'https://pygfurughz.hidoctor.app'
 
 };
