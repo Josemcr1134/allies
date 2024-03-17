@@ -1,0 +1,313 @@
+<div class="bg-white shadow">
+    <div class=" px-4 sm:px-6  lg:mx-auto lg:px-8">
+        <div class="py-6 md:flex md:items-center md:justify-between lg:border-t lg:border-gray-200">
+            <div class="flex-1 min-w-0">
+                <!-- Profile -->
+                <div class="flex items-center">
+                    <img *ngIf="avatarPath.length > 4" class="hidden h-16 w-16 rounded-full sm:block" [src]="avatarPath" alt="">
+                    <img *ngIf="avatarPath.length === 4 " class="hidden h-16 w-16 rounded-full sm:block" src="assets/images/user.jpg" alt="xxxx">
+                    <div>
+                        <div class="flex items-center">
+                            <img *ngIf="avatarPath.length > 4" class="h-16 w-16 rounded-full sm:hidden" [src]="avatarPath" alt="">
+                            <img *ngIf="avatarPath.length === 4 " class="h-16 w-16 rounded-full sm:hidden" src="assets/images/user.jpg" alt="xxxx">
+                            <h1 class="ml-3 text-2xl font-bold leading-7 text-secondary sm:leading-9 sm:truncate">¡Bienvenido {{username}}! </h1>
+                        </div>
+                        <dl class="mt-6 flex flex-col sm:ml-3 sm:mt-1 sm:flex-row sm:flex-wrap">
+                            <p class="text-sm text-gray-500">
+                                Éstas son las citas que tienes programadas para hoy
+                            </p>
+                        </dl>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-8">
+        <div class=" mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mt-2 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-5">
+                <div class="bg-white overflow-hidden shadow rounded-lg">
+                    <div class="p-5">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0">
+                                <!-- Heroicon name: outline/scale -->
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="19.118" height="21.849" viewBox="0 0 19.118 21.849">
+                                  <defs>
+                                    <linearGradient id="linear-gradient" x1="1" x2="0" y2="1" gradientUnits="objectBoundingBox">
+                                      <stop offset="0" stop-color="#512884"/>
+                                      <stop offset="1" stop-color="#0b8daf"/>
+                                    </linearGradient>
+                                  </defs>
+                                  <g id="Grupo_975" data-name="Grupo 975" transform="translate(-7895 -2709.5)">
+                                    <path id="Icon_awesome-calendar" data-name="Icon awesome-calendar" d="M.512,8.193H18.606a.514.514,0,0,1,.512.512V19.8a2.049,2.049,0,0,1-2.048,2.048H2.048A2.049,2.049,0,0,1,0,19.8V8.705A.514.514,0,0,1,.512,8.193ZM19.118,6.316V4.779a2.049,2.049,0,0,0-2.048-2.048H15.021V.512A.514.514,0,0,0,14.509,0H12.8a.514.514,0,0,0-.512.512V2.731H6.828V.512A.514.514,0,0,0,6.316,0H4.609A.514.514,0,0,0,4.1.512V2.731H2.048A2.049,2.049,0,0,0,0,4.779V6.316a.514.514,0,0,0,.512.512H18.606A.514.514,0,0,0,19.118,6.316Z" transform="translate(7895 2709.5)" fill="url(#linear-gradient)"/>
+                                    <path id="Icon_awesome-clock" data-name="Icon awesome-clock" d="M4.765.563a4.2,4.2,0,1,0,4.2,4.2A4.2,4.2,0,0,0,4.765.563ZM5.733,6.5,4.238,5.409a.2.2,0,0,1-.083-.164V2.393a.2.2,0,0,1,.2-.2h.813a.2.2,0,0,1,.2.2V4.726l1.076.783a.2.2,0,0,1,.044.285l-.478.658A.2.2,0,0,1,5.733,6.5Z" transform="translate(7899.793 2719.255)" fill="#fff"/>
+                                  </g>
+                                </svg>
+                            </div>
+                            <div class="ml-5 w-0 flex-1">
+                                <dl>
+                                    <dt class="text-sm font-medium text-secondary truncate">Citas agendadas</dt>
+                                    <dd>
+                                        <div class="text-lg font-medium text-secondary"><span class="text-bold text-gray-800">{{scheduledAppointments}}</span>/{{totalAppointment}}</div>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="bg-white overflow-hidden shadow rounded-lg">
+                    <div class="p-5">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0">
+                                <!-- Heroicon name: outline/scale -->
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="19.118" height="21.849" viewBox="0 0 19.118 21.849">
+                                  <defs>
+                                    <linearGradient id="linear-gradient" x1="1" x2="0" y2="1" gradientUnits="objectBoundingBox">
+                                      <stop offset="0" stop-color="#512884"/>
+                                      <stop offset="1" stop-color="#0b8daf"/>
+                                    </linearGradient>
+                                  </defs>
+                                  <path id="Icon_awesome-calendar-day" data-name="Icon awesome-calendar-day" d="M0,19.8a2.049,2.049,0,0,0,2.048,2.048H17.069A2.049,2.049,0,0,0,19.118,19.8V8.193H0Zm2.731-8.193a.685.685,0,0,1,.683-.683h4.1a.685.685,0,0,1,.683.683v4.1a.685.685,0,0,1-.683.683h-4.1a.685.685,0,0,1-.683-.683ZM17.069,2.731H15.021V.683A.685.685,0,0,0,14.338,0H12.973a.685.685,0,0,0-.683.683V2.731H6.828V.683A.685.685,0,0,0,6.145,0H4.779A.685.685,0,0,0,4.1.683V2.731H2.048A2.049,2.049,0,0,0,0,4.779V6.828H19.118V4.779A2.049,2.049,0,0,0,17.069,2.731Z" fill="url(#linear-gradient)"/>
+                                </svg>
+
+                            </div>
+                            <div class="ml-5 w-0 flex-1">
+                                <dl>
+                                    <dt class="text-sm font-medium text-secondary truncate">Citas Admitidas</dt>
+                                    <dd>
+                                        <div class="text-lg font-medium text-secondary"><span class="text-bold text-gray-900">{{admittedAppointments}}</span>/{{totalAppointment}}</div>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="bg-white overflow-hidden shadow rounded-lg">
+                    <div class="p-5">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0">
+                                <!-- Heroicon name: outline/scale -->
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="19.118" height="21.849" viewBox="0 0 19.118 21.849">
+                                <defs>
+                                  <linearGradient id="linear-gradient" x1="1" x2="0" y2="1" gradientUnits="objectBoundingBox">
+                                    <stop offset="0" stop-color="#512884"/>
+                                    <stop offset="1" stop-color="#0b8daf"/>
+                                  </linearGradient>
+                                </defs>
+                                <path id="Icon_awesome-calendar-times" data-name="Icon awesome-calendar-times" d="M18.606,6.828H.512A.514.514,0,0,1,0,6.316V4.779A2.049,2.049,0,0,1,2.048,2.731H4.1V.512A.514.514,0,0,1,4.609,0H6.316a.514.514,0,0,1,.512.512V2.731H12.29V.512A.514.514,0,0,1,12.8,0h1.707a.514.514,0,0,1,.512.512V2.731h2.048a2.049,2.049,0,0,1,2.048,2.048V6.316A.514.514,0,0,1,18.606,6.828ZM.512,8.193H18.606a.514.514,0,0,1,.512.512V19.8a2.049,2.049,0,0,1-2.048,2.048H2.048A2.049,2.049,0,0,1,0,19.8V8.705A.514.514,0,0,1,.512,8.193Zm10.98,6.828,2.053-2.053a.513.513,0,0,0,0-.725l-1.208-1.208a.513.513,0,0,0-.725,0L9.559,13.088,7.506,11.035a.513.513,0,0,0-.725,0L5.573,12.243a.513.513,0,0,0,0,.725l2.053,2.053L5.573,17.074a.513.513,0,0,0,0,.725l1.208,1.208a.513.513,0,0,0,.725,0l2.053-2.053,2.053,2.053a.513.513,0,0,0,.725,0L13.545,17.8a.513.513,0,0,0,0-.725Z" fill="url(#linear-gradient)"/>
+                              </svg>
+
+                            </div>
+                            <div class="ml-5 w-0 flex-1">
+                                <dl>
+                                    <dt class="text-sm font-medium text-secondary truncate">Citas canceladas</dt>
+                                    <dd>
+                                        <div class="text-lg font-medium text-secondary"><span class="text-bold text-gray-900">{{canceledAppointments}}</span>/{{totalAppointment}}</div>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="bg-white overflow-hidden shadow rounded-lg">
+                    <div class="p-5">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0">
+                                <!-- Heroicon name: outline/scale -->
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="19.118" height="21.849" viewBox="0 0 19.118 21.849">
+                                <defs>
+                                  <linearGradient id="linear-gradient" x1="1" x2="0" y2="1" gradientUnits="objectBoundingBox">
+                                    <stop offset="0" stop-color="#512884"/>
+                                    <stop offset="1" stop-color="#0b8daf"/>
+                                  </linearGradient>
+                                </defs>
+                                <path id="Icon_awesome-calendar-check" data-name="Icon awesome-calendar-check" d="M18.606,6.828H.512A.512.512,0,0,1,0,6.316V4.779A2.048,2.048,0,0,1,2.048,2.731H4.1V.512A.512.512,0,0,1,4.609,0H6.316a.512.512,0,0,1,.512.512V2.731H12.29V.512A.512.512,0,0,1,12.8,0h1.707a.512.512,0,0,1,.512.512V2.731h2.048a2.048,2.048,0,0,1,2.048,2.048V6.316A.512.512,0,0,1,18.606,6.828ZM.512,8.193H18.606a.512.512,0,0,1,.512.512V19.8a2.048,2.048,0,0,1-2.048,2.048H2.048A2.048,2.048,0,0,1,0,19.8V8.705A.512.512,0,0,1,.512,8.193Zm14.223,4.094-1.2-1.212a.512.512,0,0,0-.724,0L8.284,15.562,6.322,13.584a.512.512,0,0,0-.724,0l-1.212,1.2a.512.512,0,0,0,0,.724L7.908,19.06a.512.512,0,0,0,.724,0l6.1-6.051a.512.512,0,0,0,0-.724Z" fill="url(#linear-gradient)"/>
+                              </svg>
+
+                            </div>
+                            <div class="ml-5 w-0 flex-1">
+                                <dl>
+                                    <dt class="text-sm font-medium text-secondary truncate">Citas atendidas</dt>
+                                    <dd>
+                                        <div class="text-lg font-medium text-secondary"><span class="text-bold text-gray-900">{{attendedAppointments}}</span>/{{totalAppointment}}</div>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="bg-white overflow-hidden shadow rounded-lg">
+                    <div class="p-5">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0">
+                                <!-- Heroicon name: outline/scale -->
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20.483" height="20.483" viewBox="0 0 20.483 20.483">
+                                <defs>
+                                  <linearGradient id="linear-gradient" x1="1" x2="0" y2="1" gradientUnits="objectBoundingBox">
+                                    <stop offset="0" stop-color="#512884"/>
+                                    <stop offset="1" stop-color="#0b8daf"/>
+                                  </linearGradient>
+                                </defs>
+                                <path id="Icon_awesome-user-alt" data-name="Icon awesome-user-alt" d="M10.242,11.522A5.761,5.761,0,1,0,4.481,5.761,5.762,5.762,0,0,0,10.242,11.522Zm5.121,1.28h-2.2a6.964,6.964,0,0,1-5.833,0h-2.2A5.12,5.12,0,0,0,0,17.923v.64a1.921,1.921,0,0,0,1.92,1.92H18.563a1.921,1.921,0,0,0,1.92-1.92v-.64A5.12,5.12,0,0,0,15.362,12.8Z" fill="url(#linear-gradient)"/>
+                              </svg>
+
+                            </div>
+                            <div class="ml-5 w-0 flex-1">
+                                <dl>
+                                    <dt class="text-sm font-medium text-secondary truncate">Total de pacientes</dt>
+                                    <dd>
+                                        <div class="text-lg font-medium text-gray-900"><span class="text-bold">{{totalPatiens}}</span></div>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="flex justify-between flex-wrap sm:px-6 lg:px-8 my-8 px-4">
+
+            <h2 class="text-xl leading-6 font-semimbold text-gray-900 ">Citas</h2>
+            <div class="dropdown relative lg:mx-2 ">
+                <a class="dropdown-toggle inline-block px-4 py-1.5   font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-secondary cursor-pointer hover:shadow-lg focus:bg-cyan-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-cyan-800 active:shadow-lg transition duration-150 ease-in-out flex items-center whitespace-nowrap text-secondary "
+                    type="button" id="dropdownMenuSmallButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    Ordenar por
+                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" class="w-2 ml-2" role="img" xmlns="http://www.w3.org/2000/svg"viewBox="0 0 320 512" >
+                    <path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"></path>
+                    </svg>
+                </a>
+                <ul class=" dropdown-menu min-w-max absolute    hidden bg-white text-basez-50 float-left  py-2 list-nonetext-leftrounded-lg shadow-lg mt-1mx-2bg-clip-padding border-none" aria-labelledby="dropdownMenuSmallButton">
+                    <li>
+                        <a (click)="GetAppointmentByStatus('Agendada')" class="dropdown-item cursor-pointer text-sm py-2 px-4 font-normal block  w-full whitespace-nowrap bg-transparenttext-gray-700  hover:bg-gray-100">Agendadas</a>
+                    </li>
+                    <li>
+                      <a (click)="GetAppointmentByStatus('Atendida')" class="dropdown-item cursor-pointer text-sm py-2 px-4 font-normal block  w-full whitespace-nowrap bg-transparenttext-gray-700  hover:bg-gray-100">Atendidas</a>
+                  </li>
+                    <li>
+                        <a (click)="GetAppointmentByStatus('Cancelada')" class="dropdown-item cursor-pointer text-sm py-2 px-4 font-normal block w-full  whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100">Canceladas</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Activity list (smallest breakpoint only) -->
+        <div class="px-4 sm:px-6 lg:px-8 ">
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-1">
+              <div class="rounded-md bg-yellow-50 p-4" *ngIf="Dates.length === 0">
+                <div class="flex">
+                  <div class="flex-shrink-0">
+                    <!-- Heroicon name: mini/exclamation-triangle -->
+                    <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M8.485 3.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 3.495zM10 6a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0v-3.5A.75.75 0 0110 6zm0 9a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+                    </svg>
+                  </div>
+                  <div class="ml-3">
+                    <h3 class="text-sm font-medium text-yellow-800">Oooops</h3>
+                    <div class="mt-2 text-sm text-yellow-700">
+                      <p>No encontramos citas {{status | lowercase}}s para hoy.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                <div *ngFor="let d of Dates;" class="relative overflow-x-scroll  rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-lg flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
+                    <div class="flex-shrink-0">
+                        <img  class="h-10 w-10 rounded-full" src="assets/images/favicon.png" alt="">
+                    </div>
+                    <div class="flex gap-2 justify-between w-full">
+                        <a class="focus:outline-none">
+                            <span class="absolute inset-0" aria-hidden="true"></span>
+                            <p class="text-sm font-medium text-gray-500"><span class="text-primary">{{d.user.first_name}} {{d.user.last_name}} </span> - {{d.user.document}}</p>
+
+                        </a>
+                        <p class="text-sm font-medium text-gray-500">{{d.medical_specialty.license.specialty.name}} / Dra.{{d.medical_specialty.medical.first_name}} {{d.medical_specialty.medical.last_name}} </p>
+                        <p class="text-sm font-medium text-gray-500">
+                          <span *ngIf="d.is_telemedicine">Telemedicina</span>
+                          <span *ngIf="!d.is_telemedicine">Presencial</span>
+                        </p>
+                        <p class="text-sm text-gray-500 truncate">{{d.start_time}} - {{d.end_time}}</p>
+
+                      </div>
+
+                </div>
+                <!-- More dates... -->
+
+                <!-- Pagination  -->
+                <nav class="flex items-center justify-between mb-4 px-4  sm:px-0">
+                  <div class="-mt-px flex w-0 flex-1">
+                    <button type="button" [disabled]="previous === null" (click)="PaginationDates(-1)" class="disabled:opacity-70 disabled:cursor-none inline-flex items-center border-t-2 border-transparent pt-4 pr-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
+                      <!-- Heroicon name: mini/arrow-long-left -->
+                      <svg class="mr-3 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M18 10a.75.75 0 01-.75.75H4.66l2.1 1.95a.75.75 0 11-1.02 1.1l-3.5-3.25a.75.75 0 010-1.1l3.5-3.25a.75.75 0 111.02 1.1l-2.1 1.95h12.59A.75.75 0 0118 10z" clip-rule="evenodd" />
+                      </svg>
+                      Anterior
+                    </button>
+                  </div>
+
+                  <div class="-mt-px flex w-0 flex-1 justify-end">
+                    <button type="button" [disabled]="next === null" (click)="PaginationDates(1)" class="disabled:opacity-70 disabled:cursor-none inline-flex items-center border-t-2 border-transparent pt-4 pl-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
+                      Siguiente
+                      <!-- Heroicon name: mini/arrow-long-right -->
+                      <svg class="ml-3 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M2 10a.75.75 0 01.75-.75h12.59l-2.1-1.95a.75.75 0 111.02-1.1l3.5 3.25a.75.75 0 010 1.1l-3.5 3.25a.75.75 0 11-1.02-1.1l2.1-1.95H2.75A.75.75 0 012 10z" clip-rule="evenodd" />
+                      </svg>
+                    </button>
+                  </div>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="exampleModalScrollable" tabindex="-1" aria-labelledby="exampleModalScrollableLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable relative w-full pointer-events-none">
+            <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
+                <div class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
+                    <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalScrollableLabel">
+                        Admitir cita
+                    </h5>
+                    <button type="button" class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body relative p-4">
+                    <div class="flex items-center space-x-5 mb-6">
+                        <div class="flex-shrink-0">
+                            <div class="relative">
+                                <img class="h-16 w-16 rounded-full" src="https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80" alt="">
+                                <span class="absolute inset-0 shadow-inner rounded-full" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                        <div>
+                            <h1 class="text-2xl font-bold text-cyan-900">Ricardo Cooper</h1>
+                            <p class="text-sm font-medium text-gray-500">32 años <a href="#" class="text-gray-900"> | Masculino</a> </p>
+                        </div>
+                    </div>
+                    <div class="flex items-center  flex-wrap space-x-5 mb-6 ">
+                        <div class="flex-shrink-0 lg:border-r  border-gray-300">
+                            <div class="relative">
+                                <img class="h-30 w-30 " src="assets/images/qr.png" alt="">
+                                <span class="absolute inset-0 shadow-inner rounded-full" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                        <div>
+                            <h1 class="text-xl font-bold text-primary">Ingresar con código </h1>
+                            <div class="mt-1">
+                                <input type="text" name="text" id="text" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" placeholder=".........." a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
+                    <button type="button" class="inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out ml-1">
+                            Ingresar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>

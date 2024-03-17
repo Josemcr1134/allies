@@ -1,0 +1,79 @@
+<div class="hidden lg:flex lg:w-64 lg:flex-col lg:fixed lg:inset-y-0">
+    <!-- Sidebar component, swap this element with another sidebar if you like -->
+    <div class="flex h-full flex-col flex-grow bg-cyan-700 pt-5 pb-4 overflow-y-auto">
+        <div class="flex items-center flex-shrink-0 px-4">
+            <img class="h-8 w-auto" src="assets/images/logo-netcare-horizontal-nuevo.png" alt="Easywire logo">
+        </div>
+        <nav class="mt-5 flex-1 flex flex-col divide-y divide-cyan-800 overflow-y-auto" aria-label="Sidebar">
+            <div class="px-2 space-y-1">
+                <a [routerLink]="['/Home/ControlPanel/Welcome']" *ngIf="SpecialistType !== 3" routerLinkActive="bg-cyan-800 text-white" class="text-cyan-100 hover:text-white hover:bg-cyan-600 group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md"
+                    aria-current="page">
+                    <!-- Heroicon name: outline/home -->
+                    <svg class="mr-4 flex-shrink-0 h-6 w-6 text-cyan-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                    </svg> Panel de Control
+                </a>
+
+                <a [routerLink]="['/Home/Dates']" routerLinkActive="bg-cyan-800 text-white" class="text-cyan-100 hover:text-white hover:bg-cyan-600 group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md">
+                    <!-- Heroicon name: outline/clock -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-4 flex-shrink-0 text-cyan-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg> Citas
+                </a>
+
+                <a [routerLink]="['/Home/Products&Services']" *ngIf="SpecialistType !== 3" routerLinkActive="bg-cyan-800 text-white" class="text-cyan-100 hover:text-white hover:bg-cyan-600 group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md">
+                    <!-- Heroicon name: outline/scale -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="mr-4 flex-shrink-0 h-6 w-6 text-cyan-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                    </svg> Productos y Servicios
+                </a>
+
+                <a [routerLink]="['/Home/Discounts']" *ngIf="SpecialistType !== 3" class="text-cyan-100 hover:text-white hover:bg-cyan-600 group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md">
+                    <!-- Heroicon name: outline/credit-card -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="mr-4 flex-shrink-0 h-6 w-6 text-cyan-200" viewBox="0 0 19.774 19.774">
+                        <g id="Grupo_923" data-name="Grupo 923" transform="translate(-594.156 -142.156)">
+                          <path id="Trazado_2175" data-name="Trazado 2175" d="M742.045,262.01a2.78,2.78,0,0,1,.146-.408q2.038-3.783,4.084-7.561a.784.784,0,0,1,.812-.453.722.722,0,0,1,.639.642,1.127,1.127,0,0,1-.132.579c-.955,1.79-1.923,3.573-2.888,5.358-.388.718-.774,1.438-1.167,2.154a.757.757,0,0,1-1,.4A.81.81,0,0,1,742.045,262.01Z" transform="translate(-140.786 -106.07)" fill="#a5f3fc"/>
+                          <path id="Trazado_2176" data-name="Trazado 2176" d="M710.711,260.412a1.581,1.581,0,1,1-1.584,1.578A1.6,1.6,0,0,1,710.711,260.412Z" transform="translate(-109.449 -112.576)" fill="#a5f3fc"/>
+                          <path id="Trazado_2177" data-name="Trazado 2177" d="M830.615,372.18a1.581,1.581,0,1,1-1.578-1.584A1.6,1.6,0,0,1,830.615,372.18Z" transform="translate(-222.091 -217.467)" fill="#a5f3fc"/>
+                          <path id="Trazado_2178" data-name="Trazado 2178" d="M604.043,142.156a9.887,9.887,0,1,0,9.887,9.887A9.887,9.887,0,0,0,604.043,142.156Zm0,18.533a8.646,8.646,0,1,1,8.646-8.646A8.646,8.646,0,0,1,604.043,160.689Z" transform="translate(0 0)" fill="#a5f3fc"/>
+                        </g>
+                      </svg> Descuentos
+                </a>
+
+                <a [routerLink]="['/Home/Affiliates']" routerLinkActive="bg-cyan-800 text-white" class="text-cyan-100 hover:text-white hover:bg-cyan-600 group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md">
+                    <!-- Heroicon name: outline/user-group -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="mr-4 flex-shrink-0 h-6 w-6 text-cyan-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 21h7a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v11m0 5l4.879-4.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242z" />
+                    </svg> Consultas de Afiliados
+                </a>
+
+                <a [routerLink]="['/Home/Users']" *ngIf="SpecialistType === 2" routerLinkActive="bg-cyan-800 text-white" class="text-cyan-100 hover:text-white hover:bg-cyan-600 group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md">
+                    <!-- Heroicon name: outline/document-report -->
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="mr-4 flex-shrink-0 h-6 w-6 text-cyan-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg> Usuarios
+                </a>
+            </div>
+            <div class="mt-6 pt-6" *ngIf="SpecialistType !== 3 ">
+                <div class="px-2 space-y-1">
+                    <a [routerLink]="['/Home/Wallet']" routerLinkActive="bg-cyan-800 text-white" class="group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md text-cyan-100 hover:text-white hover:bg-cyan-600">
+                        <!-- Heroicon name: outline/cog -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="mr-4 h-6 w-6 text-cyan-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                        </svg> Wallet
+                    </a>
+                    <a [routerLink]="['/Home/Configs']" routerLinkActive="bg-cyan-800 text-white" class="group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md text-cyan-100 hover:text-white hover:bg-cyan-600">
+                        <!-- Heroicon name: outline/cog -->
+                        <svg class="mr-4 h-6 w-6 text-cyan-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg> Configuración de Agendas y Horarios
+                    </a>
+
+
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>

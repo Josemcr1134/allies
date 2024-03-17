@@ -1,0 +1,300 @@
+<div class=" sm:px-6 lg:px-8 mt-4">
+    <header>
+        <div class=" mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-2xl font-bold leading-tight flex flex-nowrap text-secondary cursor-pointer">
+                Configuración
+            </h1>
+        </div>
+    </header>
+    <!-- User Services Schedule -->
+    <div class="px-4 sm:px-6 lg:px-8 mt-12 ">
+        <h1 class="text-2xl mb-4 font-bold leading-tight flex flex-nowrap text-secondary cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
+              </svg> Agendas y eventos semanales - Dr.{{fullname}}
+        </h1>
+
+        <div class="rounded-md bg-yellow-50 p-4" *ngIf="Agendas.length === 0">
+            <div class="flex">
+                <div class="flex-shrink-0">
+                    <!-- Heroicon name: mini/exclamation-triangle -->
+                    <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M8.485 3.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 3.495zM10 6a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0v-3.5A.75.75 0 0110 6zm0 9a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+            </svg>
+                </div>
+                <div class="ml-3">
+                    <h3 class="text-sm font-medium text-yellow-800">No encontramos eventos asignados a este usuario</h3>
+                    <div class="mt-2 text-sm text-yellow-700">
+                        <p>Genera uno nuevo</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-1" *ngIf="Agendas.length">
+            <div *ngFor="let a of Agendas" (click)="GetWeeklyEvents(a.day)" data-bs-toggle="tooltip" title="Visualiza los cupos de este dia"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" class=" transition duration-300 ease-in-out my-2 cursor-pointer rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-lg flex items-center space-x-3 hover:border-purple-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-purple-500">
+                <div class="flex justify-between w-full flex-wrap">
+                    <!-- <a class="focus:outline-none mx-2">
+                        <p class="text-sm font-medium text-primary "><span class="text-primary">Consultas oftalmología</span></p>
+                    </a> -->
+                    <p class="text-sm font-medium text-gray-500 mx-2">
+                        <span *ngIf="a.day === 0">Lunes</span>
+                        <span *ngIf="a.day === 1">Martes</span>
+                        <span *ngIf="a.day === 2">Miercoles</span>
+                        <span *ngIf="a.day === 3">Jueves</span>
+                        <span *ngIf="a.day === 4">Viernes</span>
+                        <span *ngIf="a.day === 5">Sábado</span>
+                        <span *ngIf="a.day === 6">Domingo</span>
+                    </p>
+
+                    <p class="text-sm text-gray-500 truncate mx-2">{{a.start_time}} - {{a.end_time}}</p>
+                    <p class="text-sm text-gray-500 truncate mx-2">{{a.events}} cupos diarios</p>
+                    <p class="text-sm text-gray-500 truncate mx-2">Servicio: {{a.service.name}}</p>
+                    <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-green-100 text-green-800"> Habilitada </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="my-2 flex justify-end">
+            <button type="button" (click)="ShowModal()" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white btn-primary hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">Nueva agenda</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- NEW WEEKLY EVENT -->
+<div class="relative z-10 " aria-labelledby="modal-title" role="dialog" aria-modal="true" *ngIf="showNewWeeklyModal">
+
+    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+
+    <div class="fixed inset-0 z-10 overflow-y-auto">
+        <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+
+            <div class="relative transform overflow-hidden h-96 overflow-y-auto rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-md sm:p-6">
+                <div>
+                    <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-cyan-100">
+                        <!-- Heroicon name: outline/check -->
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-cyan-600">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z" />
+                          </svg>
+
+                    </div>
+                    <div class="mt-3  sm:mt-5">
+                        <h3 class="text-lg  text-center font-medium leading-6 text-cyan-600" id="modal-title">Nueva planeación diaria</h3>
+                        <h3 class="text-xs  text-center font-medium leading-6 text-gray-400" id="modal-sub-title">Se repetirá semana a semana si no se édita</h3>
+
+                        <div class="mt-3">
+
+                            <div class="mb-3">
+                              <fieldset>
+                                <legend class="text-sm font-medium text-cyan-900">Días disponibles</legend>
+                                <div   class="mt-4 divide-y divide-gray-200 border-t border-b border-gray-200">
+                                  <div  *ngIf="monday !== undefined"  class="relative flex items-start py-4">
+                                    <div class="min-w-0 flex-1 text-sm">
+                                      <label for="monday" class="select-none font-medium text-gray-700">Lunes</label>
+                                    </div>
+                                    <div class="ml-3 flex h-5 items-center">
+                                      <input (click)="AddDay(monday)" id="monday" [value]="monday" name="monday" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500">
+                                    </div>
+                                  </div>
+
+                                  <div *ngIf="tuesday !== undefined" class="relative flex items-start py-4">
+                                    <div class="min-w-0 flex-1 text-sm">
+                                      <label for="tuesday" class="select-none font-medium text-gray-700">Martes</label>
+                                    </div>
+                                    <div class="ml-3 flex h-5 items-center">
+                                      <input (click)="AddDay(tuesday)" id="tuesday" [value]="tuesday" name="tuesday" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500">
+                                    </div>
+                                  </div>
+
+                                  <div *ngIf="wednesday !== undefined" class="relative flex items-start py-4">
+                                    <div class="min-w-0 flex-1 text-sm">
+                                      <label for="wednesday" class="select-none font-medium text-gray-700">Miercoles</label>
+                                    </div>
+                                    <div class="ml-3 flex h-5 items-center">
+                                      <input (click)="AddDay(wednesday)" id="wednesday" [value]="wednesday" name="wednesday" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500">
+                                    </div>
+                                  </div>
+
+                                  <div *ngIf="thursday!== undefined" class="relative flex items-start py-4">
+                                    <div class="min-w-0 flex-1 text-sm">
+                                      <label for="thursday" class="select-none font-medium text-gray-700">Jueves</label>
+                                    </div>
+                                    <div class="ml-3 flex h-5 items-center">
+                                      <input (click)="AddDay(thursday)" id="thursday" [value]="thursday" name="thursday" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500">
+                                    </div>
+                                  </div>
+
+                                  <div *ngIf="friday !== undefined"  class="relative flex items-start py-4">
+                                    <div class="min-w-0 flex-1 text-sm">
+                                      <label for="friday" class="select-none font-medium text-gray-700">Viernes</label>
+                                    </div>
+                                    <div class="ml-3 flex h-5 items-center">
+                                      <input (click)="AddDay(friday)" id="friday" [value]="friday" name="friday" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500">
+                                    </div>
+                                  </div>
+                                  <div *ngIf="saturday !== undefined"  class="relative flex items-start py-4">
+                                    <div class="min-w-0 flex-1 text-sm">
+                                      <label for="saturday" class="select-none font-medium text-gray-700">Sábado</label>
+                                    </div>
+                                    <div class="ml-3 flex h-5 items-center">
+                                      <input (click)="AddDay(saturday)" id="saturday" [value]="saturday" name="saturday" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500">
+                                    </div>
+                                  </div>
+                                  <div *ngIf="sunday !== undefined"  class="relative flex items-start py-4">
+                                    <div class="min-w-0 flex-1 text-sm">
+                                      <label for="sunday" class="select-none font-medium text-gray-700">Domingo</label>
+                                    </div>
+                                    <div class="ml-3 flex h-5 items-center">
+                                      <input (click)="AddDay(sunday)" id="sunday" [value]="sunday" name="sunday" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500">
+                                    </div>
+                                  </div>
+                                </div>
+                              </fieldset>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="open-hour" class="block text-sm font-medium text-cyan-700">Hora de apertura*</label>
+                                <div class="mt-1">
+                                    <input type="time" [(ngModel)]="start_time" name="open-hour" id="open-hour" class="block w-full rounded-md border-cyan-600 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 disabled:cursor-not-allowed disabled:border-cyan-200 disabled:bg-cyan-50 disabled:text-cyan-500 sm:text-sm">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="duration" class="block text-sm font-medium text-cyan-700">Duración (Minutos)*</label>
+                                <div class="mt-1">
+                                    <input type="number" [(ngModel)]="duration" name="duration" id="duration" class="block w-full rounded-md border-cyan-600 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 disabled:cursor-not-allowed disabled:border-cyan-200 disabled:bg-cyan-50 disabled:text-cyan-500 sm:text-sm">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="event-quantity" class="block text-sm font-medium text-cyan-700"># de eventos*</label>
+                                <div class="mt-1">
+                                    <input type="number" [(ngModel)]="events" name="event-quantity" id="event-quantity" class="block w-full rounded-md border-cyan-600 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 disabled:cursor-not-allowed disabled:border-cyan-200 disabled:bg-cyan-50 disabled:text-gray-500 sm:text-sm">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="day" class="block text-sm font-medium text-cyan-700">Tipo de cita* </label>
+                                <select id="day" name="day" [(ngModel)]="isTelemedicine" class="mt-1 block w-full rounded-md border-cyan-600 py-2 pl-3 pr-10 text-base focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm">
+                                  <option value=true *ngIf="platformService === '1'">Telemedicina</option>
+                                  <option value=false *ngIf="platformService === '2'">Presencial</option>
+                                  <option value=null *ngIf="platformService === '3'">Ambas</option>
+                                </select>
+                            </div>
+
+                            <div>
+                              <label for="service" class="block text-sm font-medium text-gray-700">Servicio</label>
+                              <select [(ngModel)]="serviceSelected" id="service" name="service" class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                                <option *ngFor="let s of AssignedServices" [value]="s.service.id">{{s.service.name}}</option>
+                              </select>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3">
+                  <button type="button" (click)="NewDailyAgenda()" class="inline-flex w-full justify-center rounded-md border border-transparent bg-cyan-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 sm:text-sm">Guardar</button>
+                  <button type="button" (click)="ShowModal()" class="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2  sm:mt-0 sm:text-sm">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- EVENTS BY WEEKLY SLIDE OVER -->
+<div class="flex space-x-2">
+  <div>
+    <div class="offcanvas offcanvas-start fixed bottom-0 flex flex-col max-w-full bg-white invisible bg-clip-padding shadow-sm outline-none transition duration-300 ease-in-out text-gray-700 top-0 left-0 border-none w-auto" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+      <div class="offcanvas-header flex items-center justify-between p-4">
+        <div class="mt-1">
+          <h2 class="text-xl font-semibold text-cyan-700" id="slide-over-title">Cupos habilitados</h2>
+          <p class="text-xs text-gray-400">Visualiza los eventos habilitados  para el mes completo <br> y deshabilitalo si es necesario.</p>
+        </div>
+        <button type="button" class="btn-close box-content w-4 h-4 p-2 -my-5 -mr-2 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body flex-grow p-4 overflow-y-auto">
+        <div class="rounded-md bg-yellow-50 p-4 mb-2" *ngIf="!Events.length">
+          <div class="flex">
+            <div class="flex-shrink-0">
+              <!-- Heroicon name: mini/exclamation-triangle -->
+              <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M8.485 3.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 3.495zM10 6a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0v-3.5A.75.75 0 0110 6zm0 9a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <div class="ml-3">
+              <h3 class="text-sm font-medium text-yellow-800">Oooops</h3>
+              <div class="mt-2 text-sm text-yellow-700">
+                <ul role="list" class="list-disc space-y-1 pl-5">
+                  <li>No tienes mas cupos disponibles este mes</li>
+                  <li>Ya todos tus cupos fueron reservados por nuestros afiliados</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div *ngFor="let a of Events"  class=" transition duration-300 ease-in-out my-4 rounded-lg border border-sky-300 bg-white px-6 py-5 shadow-lg flex items-center space-x-3 hover:border-purple-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-purple-500">
+          <div class="flex justify-between w-full flex-wrap">
+              <!-- <a class="focus:outline-none mx-2">
+                  <p class="text-sm font-medium text-primary "><span class="text-primary">Consultas oftalmología</span></p>
+              </a> -->
+              <p class="text-sm font-medium text-sky-500 mx-2">
+                  <span *ngIf="a.day === 0">Lunes</span>
+                  <span *ngIf="a.day === 1">Martes</span>
+                  <span *ngIf="a.day === 2">Miercoles</span>
+                  <span *ngIf="a.day === 3">Jueves</span>
+                  <span *ngIf="a.day === 4">Viernes</span>
+                  <span *ngIf="a.day === 5">Sábado</span>
+                  <span *ngIf="a.day === 6">Domingo</span>
+              </p>
+
+              <p class="text-sm text-gray-500 truncate mx-2">Fecha: {{a.date}}</p>
+              <p class="text-sm text-gray-500 truncate mx-2">{{a.start_time}} - {{a.end_time}}</p>
+
+              <a data-bs-toggle="tooltip" title="Elimina este cupo" (click)="UpdateEventStatus(a.id)">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hover:text-red-800 ml-2 w-5 h-5 text-red-500 cursor-pointer ">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                </svg>
+
+              </a>
+
+          </div>
+        </div>
+        <nav class="flex items-center justify-between border-t border-gray-200 px-4 sm:px-0">
+          <div class="-mt-px flex w-0 flex-1">
+            <button type="button" [disabled]="eventPrevious === null" (click)="PaginationEvents(-1)" class="disabled:opacity-60 disabled:cursor-not-allowed inline-flex items-center border-t-2 border-transparent pt-4 pr-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
+              <!-- Heroicon name: mini/arrow-long-left -->
+              <svg class="mr-3 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M18 10a.75.75 0 01-.75.75H4.66l2.1 1.95a.75.75 0 11-1.02 1.1l-3.5-3.25a.75.75 0 010-1.1l3.5-3.25a.75.75 0 111.02 1.1l-2.1 1.95h12.59A.75.75 0 0118 10z" clip-rule="evenodd" />
+              </svg>
+              Anterior
+            </button>
+          </div>
+
+          <div class="-mt-px flex w-0 flex-1 justify-end">
+            <button type="button" [disabled]="eventNext === null" (click)="PaginationEvents(1)" class="disabled:opacity-60 disabled:cursor-not-allowed inline-flex items-center border-t-2 border-transparent pt-4 pl-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
+              Siguiente
+              <!-- Heroicon name: mini/arrow-long-right -->
+              <svg class="ml-3 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M2 10a.75.75 0 01.75-.75h12.59l-2.1-1.95a.75.75 0 111.02-1.1l3.5 3.25a.75.75 0 010 1.1l-3.5 3.25a.75.75 0 11-1.02-1.1l2.1-1.95H2.75A.75.75 0 012 10z" clip-rule="evenodd" />
+              </svg>
+            </button>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Required popper.js TOOLTIP-->
+<script src="https://unpkg.com/@popperjs/core@2.9.1/dist/umd/popper.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+  var tooltipTriggerList = [].slice.call(
+    document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  );
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new Tooltip(tooltipTriggerEl);
+  });
+</script>

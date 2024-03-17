@@ -1,0 +1,32 @@
+<div class="flex flex-col justify-center min-h-full py-12 sm:px-6 lg:px-8 bg-gray-50">
+    <div class="w-full max-w-sm mx-auto lg:w-96">
+        <div>
+            <img class="w-full h-12 text-center" src="assets/images/logo-netcare-horizontal.svg" alt="Workflow">
+
+        </div>
+        <h2 class="mt-8 text-xl font-bold tracking-tight text-center text-gray-900">Cambia tu contraseña</h2>
+        <p class="mt-2 text-sm text-center text-gray-400">
+
+            <a class="font-medium text-gray-400 hover:text-gray-500"> Ingresa el email con el que te registraste </a>
+        </p>
+    </div>
+
+    <div class="mt-4 sm:mx-auto sm:w-full sm:max-w-md">
+        <div class="px-4 py-8 bg-white shadow sm:rounded-lg sm:px-10">
+            <div class="space-y-6">
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700"> Correo electrónico</label>
+                    <div class="mt-1">
+                        <input id="email" name="email" type="email" (keyup)="validarEmail()" [(ngModel)]="email" class="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm">
+                        <small class="text-red-600" *ngIf="emailStatus ===  false ">Este email no es válido </small>
+                    </div>
+                </div>
+                <div>
+                    <button type="button" (click)="SendEmailCode()" [disabled]="email.length === 0 || emailStatus === false" class="flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-purple-800 border border-transparent rounded-md shadow-sm disabled:opacity-60 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">Enviar</button>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

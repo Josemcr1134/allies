@@ -1,0 +1,301 @@
+<div class=" sm:px-6 lg:px-8">
+    <header>
+        <div class="px-4 mx-auto sm:px-6 lg:px-8">
+            <h1 class="flex text-2xl font-bold leading-tight cursor-pointer flex-nowrap text-secondary">
+                Usuarios
+            </h1>
+        </div>
+    </header>
+    <!-- This example requires Tailwind CSS v2.0+ -->
+    <div class="px-4 mt-12 sm:px-6 lg:px-8">
+        <div class="justify-between sm:flex">
+            <div class="w-full sm:flex">
+                <div class="relative w-full mb-4 mr-2">
+                    <div class="absolute inset-y-0 left-0 flex items-center py-2 pl-3 pointer-events-none">
+                        <!-- Heroicon name: solid/search -->
+                        <svg class="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                    </svg>
+                    </div>
+                    <input (keyup)="GetSubordinates()" [(ngModel)]="searchTerm" id="search" name="search" class="block w-full pl-10 pr-3 text-sm placeholder-gray-500 bg-white border border-gray-300 rounded-md focus:outline-none focus:text-gray-900 focus:placeholder-gray-400 focus:ring-1 sm:text-sm" placeholder="Buscar..."
+                        type="search">
+                </div>
+
+            </div>
+            <div class=" sm:mt-0 sm:ml-16 sm:flex-none">
+                <button type="button" [routerLink]="['/Home/Users/NewUser']"  class="inline-flex justify-center px-4 py-2 text-sm font-medium text-white border border-transparent rounded-md shadow-sm btn-primary hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    Nuevo usuario
+                </button>
+            </div>
+        </div>
+
+        <div class="flex flex-col mt-8">
+            <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+
+
+                <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+                    <!-- Non Users alert -->
+                    <div class="p-4 rounded-md bg-yellow-50" *ngIf="Users.length === 0">
+                        <div class="flex">
+                            <div class="flex-shrink-0">
+                                <!-- Heroicon name: solid/exclamation -->
+                                <svg class="w-5 h-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <div class="ml-3">
+                                <h3 class="text-sm font-medium text-yellow-800">Oooops</h3>
+                                <div class="mt-2 text-sm text-yellow-700">
+                                    <p>No encontramos registros.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg" *ngIf="Users.length > 0">
+                        <table class="min-w-full divide-y divide-gray-300">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-primary sm:pl-6">Nombre</th>
+                                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-primary">Identificación</th>
+                                    <!-- <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-primary">Especialidad</th> -->
+                                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-primary">Correo</th>
+                                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-primary">Celular</th>
+                                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-primary">Fecha de creación</th>
+                                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-primary">Estado</th>
+                                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-primary"></th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr class="hover:bg-gray-200 " *ngFor="let u of Users">
+                                    <td class="py-4 pl-4 pr-3 text-sm whitespace-nowrap sm:pl-6">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 w-10 h-10">
+                                                <img class="w-10 h-10 rounded-full" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                                            </div>
+                                            <div class="ml-4">
+                                                <div class="font-medium text-gray-900">{{u.first_name}} {{u.last_name}} </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-3 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                        <div class="text-gray-900">{{u.document}}</div>
+                                        <div class="text-gray-500">{{u.document_type}}</div>
+                                    </td>
+
+                                    <!-- <td class="px-3 py-4 text-sm text-gray-500 whitespace-nowrap">Ortopedia</td> -->
+                                    <td class="px-3 py-4 text-sm text-gray-500 whitespace-nowrap">{{u.email}}</td>
+                                    <td class="px-3 py-4 text-sm text-gray-500 whitespace-nowrap">{{u.phone_number}}</td>
+                                    <td class="px-3 py-4 text-sm text-gray-500 whitespace-nowrap">{{u.date_joined | date:'shortDate'}}</td>
+                                    <td class="px-3 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                        <span class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full" *ngIf="u.status === 'enabled'">Activo</span>
+                                        <span class="inline-flex px-2 text-xs font-semibold leading-5 text-red-800 bg-red-100 rounded-full" *ngIf="u.status === 'disabled'">Inactivo</span>
+                                        <span class="inline-flex px-2 text-xs font-semibold leading-5 text-orange-800 bg-orange-100 rounded-full" *ngIf="u.status === 'pre-registered'">Pre registrado</span>
+                                        <span class="inline-flex px-2 text-xs font-semibold leading-5 text-blue-800 bg-blue-100 rounded-full" *ngIf="u.status === 'files-sent'">Documentos cargados</span>
+                                    </td>
+                                    <td class="relative flex gap-2 px-3 text-sm whitespace-nowrap flex-nowrap ">
+                                        <a (click)="ChangeUserStatus('disabled' ,u.id)" data-bs-toggle="tooltip" title="Deshabilitar usuario" class="mt-5 text-red-600 cursor-pointer hover:text-red-900" *ngIf="u.status === 'enabled'">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 " fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                                </svg>
+                                        </a>
+                                        <a (click)="ChangeUserStatus('enabled' ,u.id)" data-bs-toggle="tooltip" title="Habilitar usuario" class="mt-5 text-green-600 cursor-pointer hover:text-green-900" *ngIf="u.status === 'disabled'">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mx-2 mt-4">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                          </svg>
+                                        </a>
+                                        <a (click)="ShowNewLicenseModal(u.id)" data-bs-toggle="tooltip" title="Asigna una nueva especialidad a este usuario" class="mt-5 text-blue-600 cursor-pointer hover:text-blue-900">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
+                                            </svg>
+                                        </a>
+                                        <a (click)="ShowLicensesModal(u.id)" data-bs-toggle="tooltip" title="Ver especialidades asignadas a este usuario"  class="mt-5 cursor-pointer text-cyan-600 hover:text-cyan-900">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z" />
+                                            </svg>
+                                        </a>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- Pagination -->
+            <nav class="flex items-center justify-between col-span-4 px-4 mt-3 border-t border-gray-200 sm:px-0">
+                <div class="flex flex-1 w-0 -mt-px">
+                    <button type="button" (click)="PaginationSubordinate(-1)" [disabled]="previous === null" class="inline-flex items-center pt-4 pr-1 text-sm font-medium text-gray-500 border-t-2 border-transparent cursor-pointer disabled:opacity-60 disabled:cursor-none hover:text-gray-700 hover:border-gray-300">
+                        <!-- Heroicon name: solid/arrow-narrow-left -->
+                        <svg class="w-5 h-5 mr-3 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+                        </svg> Antes
+                    </button>
+                </div>
+
+                <div class="flex justify-end flex-1 w-0 -mt-px">
+                    <button (click)="PaginationSubordinate(1)" [disabled]="next === null" class="inline-flex items-center pt-4 pl-1 text-sm font-medium text-gray-500 border-t-2 border-transparent cursor-pointer disabled:opacity-60 disabled:cursor-none hover:text-gray-700 hover:border-gray-300">
+                        Siguiente
+                        <!-- Heroicon name: solid/arrow-narrow-right -->
+                        <svg class="w-5 h-5 ml-3 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- NEW LICENSE MODAL -->
+<div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true" *ngIf="NewLicenseModal === true">
+
+    <div class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75"></div>
+
+
+    <div class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75"></div>
+
+    <div class="fixed inset-0 z-10 overflow-y-auto">
+        <div class="flex items-end justify-center min-h-full p-4 text-center sm:items-center sm:p-0">
+            <div class="relative px-4 pt-5 pb-4 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl sm:my-8 sm:max-w-sm sm:w-full sm:p-6">
+                <div>
+                    <div class="flex items-center justify-center w-12 h-12 mx-auto bg-purple-100 rounded-full">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-purple-600">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
+                        </svg>
+
+                    </div>
+                    <div class="mt-3 text-center sm:mt-5">
+                        <h3 class="text-lg font-medium leading-6 text-gray-900" id="modal-title">Asigna una nueva especialidad</h3>
+                        <div class="mt-3">
+                            <label for="Specialties" class="block text-sm font-medium text-left text-gray-700">Especialidades</label>
+                            <select id="Specialties" [(ngModel)]="specialtyID" name="Specialties" class="block w-full py-2 pl-3 pr-10 mt-1 text-base border-gray-300 rounded-md focus:border-purple-500 focus:outline-none focus:ring-purple-500 sm:text-sm">
+                                <option *ngFor="let s of Specialties" [value]="s.id">{{s.specialty.name}} </option>
+
+                            </select>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 gap-5 mt-5 sm:mt-6 md:grid-cols-2">
+                    <button type="button" (click)="ShowNewLicenseModal(this.medical_id)" class="inline-flex justify-center w-full px-4 py-2 text-base font-medium text-white bg-gray-300 border border-transparent rounded-md shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 sm:text-sm">Cancelar</button>
+                    <button type="button" (click)="NewMedicalSpecialtie()" [disabled]="specialtyID.length === 0" class="inline-flex justify-center w-full px-4 py-2 text-base font-medium text-white bg-purple-600 border border-transparent rounded-md shadow-sm disabled:opacity-60 disabled:cursor-not-allowed hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 sm:text-sm">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- LICENSES MODAL -->
+<div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true" *ngIf="LicenseModal === true">
+
+    <div class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75"></div>
+
+    <div class="fixed inset-0 z-10 overflow-y-auto">
+        <div class="flex items-end justify-center w-full min-h-full p-4 text-center sm:items-center sm:p-0">
+
+            <div class="relative w-full px-4 pt-5 pb-4 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
+                <div>
+                    <div class="flex items-center justify-center w-12 h-12 mx-auto rounded-full bg-cyan-100">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-cyan-600">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
+                        </svg>
+
+                    </div>
+                    <div class="mt-3 text-center sm:mt-5">
+                        <h3 class="text-lg font-medium leading-6 text-gray-900" id="modal-title">Licencias asignadas</h3>
+                        <div class="p-4 my-4 rounded-md bg-yellow-50" *ngIf="Licenses.length === 0">
+                            <div class="flex">
+                                <div class="flex-shrink-0">
+                                    <!-- Heroicon name: mini/exclamation-triangle -->
+                                    <svg class="w-5 h-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M8.485 3.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 3.495zM10 6a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0v-3.5A.75.75 0 0110 6zm0 9a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+                                </svg>
+                                </div>
+                                <div class="ml-3">
+                                    <h3 class="text-sm font-medium text-left text-yellow-800">Alerta</h3>
+                                    <div class="mt-2 text-sm text-yellow-700">
+                                        <p>No encontramos licencias asignadas a este usuario .</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col mt-8" *ngIf="Licenses.length">
+                            <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+                                    <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+                                        <table class="min-w-full divide-y divide-gray-300">
+                                            <thead class="bg-gray-50">
+                                                <tr>
+                                                    <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Especialidad</th>
+                                                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Estado</th>
+                                                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Descripción</th>
+                                                    <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
+                                                        <span class="sr-only">Edit</span>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="bg-white divide-y divide-gray-200">
+                                                <tr *ngFor="let l of Licenses">
+                                                    <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 whitespace-nowrap sm:pl-6">{{l.license.specialty.name}} </td>
+                                                    <td class="px-3 py-4 text-sm text-green-500 whitespace-nowrap" *ngIf="l.is_active === true">Activa</td>
+                                                    <td class="px-3 py-4 text-sm text-red-500 whitespace-nowrap" *ngIf="l.is_active === false">Inactiva</td>
+                                                    <td class="px-3 py-4 text-sm text-gray-500 whitespace-nowrap">{{l.license.specialty.description | slice:0:10}}</td>
+                                                    <td class="relative flex py-4 pl-3 pr-4 text-sm font-medium text-right whitespace-nowrap flex-nowrap sm:pr-6">
+                                                        <a (click)="ChangeStatus(l.is_active, l.id)" class="text-green-600 cursor-pointer hover:text-green-900" *ngIf="l.is_active === false">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mx-2">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                              </svg>
+                                                        </a>
+                                                        <a (click)="ChangeStatus(l.is_active, l.id)" class="text-red-600 cursor-pointer hover:text-red-900" *ngIf="l.is_active === true">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mx-2 " fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                                            </svg>
+                                                        </a>
+                                                        <a (click)="DeleteMedicalSpecialty(l.id)" class="text-red-500 cursor-pointer hover:text-red-700">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                                                          </svg>
+
+                                                        </a>
+                                                    </td>
+                                                </tr>
+
+                                                <!-- More people... -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="mt-5 sm:mt-6">
+                    <button (click)="ShowLicensesModal(this.medical_id)" type="button" class="inline-flex justify-center px-4 py-2 text-base font-medium text-white bg-gray-400 border border-transparent rounded-md shadow-sm lg:w-25 sm:w-full hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 sm:text-sm">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Required popper.js TOOLTIP-->
+<script src="https://unpkg.com/@popperjs/core@2.9.1/dist/umd/popper.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+  var tooltipTriggerList = [].slice.call(
+    document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  );
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new Tooltip(tooltipTriggerEl);
+  });
+</script>

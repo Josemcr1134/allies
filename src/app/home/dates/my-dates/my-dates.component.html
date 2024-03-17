@@ -1,0 +1,332 @@
+<div class=" sm:px-6 lg:px-8 mt-4">
+    <header>
+        <div class=" mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-2xl font-bold leading-tight flex flex-nowrap text-secondary cursor-pointer">
+                Citas
+            </h1>
+        </div>
+    </header>
+
+    <div class="mt-6">
+        <div class=" mx-auto px-4 sm:px-6 lg:px-8 ">
+            <div class=" grid grid-cols-1 gap-5 sm:grid-cols-2 ">
+                <div class="bg-gray-100 overflow-hidden shadow rounded-lg">
+                    <div class="p-4">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0">
+                                <!-- Heroicon name: outline/scale -->
+
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="19.118" height="21.849" viewBox="0 0 19.118 21.849">
+                                    <defs>
+                                      <linearGradient id="linear-gradient" x1="1" x2="0" y2="1" gradientUnits="objectBoundingBox">
+                                        <stop offset="0" stop-color="#512884"/>
+                                        <stop offset="1" stop-color="#0b8daf"/>
+                                      </linearGradient>
+                                    </defs>
+                                    <g id="Grupo_975" data-name="Grupo 975" transform="translate(-7895 -2709.5)">
+                                      <path id="Icon_awesome-calendar" data-name="Icon awesome-calendar" d="M.512,8.193H18.606a.514.514,0,0,1,.512.512V19.8a2.049,2.049,0,0,1-2.048,2.048H2.048A2.049,2.049,0,0,1,0,19.8V8.705A.514.514,0,0,1,.512,8.193ZM19.118,6.316V4.779a2.049,2.049,0,0,0-2.048-2.048H15.021V.512A.514.514,0,0,0,14.509,0H12.8a.514.514,0,0,0-.512.512V2.731H6.828V.512A.514.514,0,0,0,6.316,0H4.609A.514.514,0,0,0,4.1.512V2.731H2.048A2.049,2.049,0,0,0,0,4.779V6.316a.514.514,0,0,0,.512.512H18.606A.514.514,0,0,0,19.118,6.316Z" transform="translate(7895 2709.5)" fill="url(#linear-gradient)"/>
+                                      <path id="Icon_awesome-clock" data-name="Icon awesome-clock" d="M4.765.563a4.2,4.2,0,1,0,4.2,4.2A4.2,4.2,0,0,0,4.765.563ZM5.733,6.5,4.238,5.409a.2.2,0,0,1-.083-.164V2.393a.2.2,0,0,1,.2-.2h.813a.2.2,0,0,1,.2.2V4.726l1.076.783a.2.2,0,0,1,.044.285l-.478.658A.2.2,0,0,1,5.733,6.5Z" transform="translate(7899.793 2719.255)" fill="#fff"/>
+                                    </g>
+                                  </svg>
+
+                            </div>
+                            <div class="ml-5 w-0 flex-1">
+                                <dl>
+                                    <dt class="text-sm font-medium text-secondary truncate">Citas agendadas</dt>
+                                    <dd>
+                                        <div class="text-lg font-medium text-secondary"><span class="text-bold text-gray-800">{{scheduledAppointments}}</span>/{{totalAppointment}}</div>
+                                    </dd>
+                                </dl>
+                                <small class="text-xs text-gray-500 font-medium">{{totalAggendedToPay | currency}} </small>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="bg-gray-100 overflow-hidden shadow rounded-lg">
+                    <div class="p-4">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0">
+                                <!-- Heroicon name: outline/scale -->
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20.483" height="20.483" viewBox="0 0 20.483 20.483">
+                                    <defs>
+                                      <linearGradient id="linear-gradient" x1="1" x2="0" y2="1" gradientUnits="objectBoundingBox">
+                                        <stop offset="0" stop-color="#512884"/>
+                                        <stop offset="1" stop-color="#0b8daf"/>
+                                      </linearGradient>
+                                    </defs>
+                                    <path id="Icon_awesome-user-alt" data-name="Icon awesome-user-alt" d="M10.242,11.522A5.761,5.761,0,1,0,4.481,5.761,5.762,5.762,0,0,0,10.242,11.522Zm5.121,1.28h-2.2a6.964,6.964,0,0,1-5.833,0h-2.2A5.12,5.12,0,0,0,0,17.923v.64a1.921,1.921,0,0,0,1.92,1.92H18.563a1.921,1.921,0,0,0,1.92-1.92v-.64A5.12,5.12,0,0,0,15.362,12.8Z" fill="url(#linear-gradient)"/>
+                                  </svg>
+
+
+                            </div>
+                            <div class="ml-5 w-0 flex-1">
+                                <dl>
+                                    <dt [routerLink]="['/Home/Dates/PatientsTreated']" class="text-sm font-medium cursor-pointer hover:underline group text-secondary truncate flex flex-nowrap">
+                                        <span>Pacientes atendidos</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="margin:2px  0px 0px 5px" >
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                      </svg>
+                                    </dt>
+                                    <dd>
+                                        <div class="text-lg font-medium text-gray-900"><span class="text-bold">{{totalPatiens}}</span></div>
+                                        <small class="text-xs text-gray-500 font-medium">{{totalSold | currency}}</small>
+                                    </dd>
+
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="px-4 sm:px-6 lg:px-8 mt-6  rounded-md">
+
+            <div class=" flex flex-col">
+                <ul class="nav nav-tabs nav-justified flex flex-col  md:flex-row  flex-wrap list-none  border-b-0 pl-0 mb-2 " id="tabs-tabJustify" role="tablist">
+                    <li class="nav-item flex-grow text-center" role="presentation">
+                        <a href="#tabs-homeJustify" class=" nav-link  w-full  block font-medium text-xs leading-tight uppercase border-x-0 border-t-0 border-b-2 border-transparent  px-6 py-3  my-2 hover:border-transparent hover:bg-gray-100  focus:border-transparent active " id="tabs-home-tabJustify" data-bs-toggle="pill" data-bs-target="#tabs-homeJustify" role="tab" aria-controls="tabs-homeJustify" aria-selected="true">Hoy</a>
+                    </li>
+                    <li class="nav-item flex-grow text-center" role="presentation">
+                        <a href="#tabs-profileJustify" class=" nav-link w-full block font-medium text-xs leading-tight uppercase border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-transparent hover:bg-gray-100 focus:border-transparent" id="tabs-profile-tabJustify" data-bs-toggle="pill" data-bs-target="#tabs-profileJustify" role="tab" aria-controls="tabs-profileJustify" aria-selected="false">Semana/Mes</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="tabs-tabContentJustify">
+                    <div class="tab-pane fade show active" id="tabs-homeJustify" role="tabpanel" aria-labelledby="tabs-home-tabJustify">
+                        <div class="px-4 pb-4 sm:px-6 lg:px-8 bg-gray-50 py-2 rounded-md">
+                            <div class=" z-20 flex items-center justify-end border-b border-gray-200 py-4  lg:flex-none">
+                                <div class="flex items-center">
+                                    <div class="    w-full">
+                                        <input type="date" [(ngModel)]="datesByDay" (change)="GetAppointmentsByDate()" class="form-control block w-full px-3 rounded-md  text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300  transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-8 flex flex-col">
+                                <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                    <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+                                        <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+                                            <div class="rounded-md bg-yellow-50 p-4" *ngIf="AppointmentsByDay.length === 0">
+                                              <div class="flex">
+                                                <div class="flex-shrink-0">
+                                                  <!-- Heroicon name: mini/exclamation-triangle -->
+                                                  <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                    <path fill-rule="evenodd" d="M8.485 3.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 3.495zM10 6a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0v-3.5A.75.75 0 0110 6zm0 9a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+                                                  </svg>
+                                                </div>
+                                                <div class="ml-3">
+                                                  <h3 class="text-sm font-medium text-yellow-800">Oooops</h3>
+                                                  <div class="mt-2 text-sm text-yellow-700">
+                                                    <p>No encontramos citas para este día .</p>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <table class="min-w-full divide-y divide-gray-300" *ngIf="AppointmentsByDay.length">
+                                                <thead class="bg-gray-50">
+                                                    <tr>
+                                                        <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-primary sm:pl-6">Afiliado</th>
+                                                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-primary">Tipo de cita</th>
+                                                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-primary">Estado</th>
+                                                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-primary">Fecha</th>
+                                                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-primary">Hora</th>
+                                                        <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6"> </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="divide-y divide-gray-200 bg-white">
+                                                    <tr *ngFor="let a of AppointmentsByDay">
+                                                        <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
+                                                            <div class="flex items-center">
+                                                                <div class="h-10 w-10 flex-shrink-0">
+                                                                  <img *ngIf="a.user.avatar === null" class="h-10 w-10 rounded-full" src="assets/images/favicon.png" alt="">
+                                                                  <img *ngIf="a.user.avatar !== null" class="h-10 w-10 rounded-full" [src]="a.medical_specialty.medical.avatar" alt="">
+                                                                </div>
+                                                                <div class="ml-4">
+                                                                    <div class="font-medium text-gray-900">{{a.user.first_name}} {{a.user.last_name}}</div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-900">
+                                                            <span *ngIf="a.is_telemedicine" class="text-gray-900">Telemedicina</span>
+                                                            <span *ngIf="!a.is_telemedicine" class="text-gray-900">Presencial</span>
+
+                                                        </td>
+                                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                                            <span [ngClass]="{'text-green-500': a.status === 'Atendida', 'bg-green-100': a.status === 'Atendida', 'text-orange-500': a.status === 'Agendada', 'bg-orange-100': a.status === 'Agendada',  'text-blue-500': a.status === 'Reservada', 'bg-blue-100': a.status === 'Reservada'  }" class="inline-flex rounded-full  px-2 text-xs font-semibold leading-5 ">{{a.status}}</span>
+                                                        </td>
+                                                      <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-900 ">{{a.date}} </td>
+                                                      <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-900 ">{{a.start_time}} - {{a.end_time}}</td>
+                                                      <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                                                        <!-- -->
+                                                        <button  *ngIf="user_type === 3 && a.status === 'Agendada' || user_type === 4 && a.status === 'Agendada'  " data-bs-toggle="modal" data-bs-target="#exampleModalScrollable" (click)="GetAppointmentData(a.id, a.payment_reference, a.user.first_name, a.user.last_name, a.user.gender)"     type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white btn-primary hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Atender cita</button>
+                                                        </td>
+                                                    </tr>
+                                                    <!-- -->
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                         <!-- Pagination  -->
+                                        <nav class="flex items-center justify-between mb-4 px-4  sm:px-0">
+                                          <div class="-mt-px flex w-0 flex-1">
+                                            <button type="button" [disabled]="previous === null" (click)="PaginationByDay(-1)" class="disabled:opacity-70 disabled:cursor-none inline-flex items-center border-t-2 border-transparent pt-4 pr-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
+                                              <!-- Heroicon name: mini/arrow-long-left -->
+                                              <svg class="mr-3 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                <path fill-rule="evenodd" d="M18 10a.75.75 0 01-.75.75H4.66l2.1 1.95a.75.75 0 11-1.02 1.1l-3.5-3.25a.75.75 0 010-1.1l3.5-3.25a.75.75 0 111.02 1.1l-2.1 1.95h12.59A.75.75 0 0118 10z" clip-rule="evenodd" />
+                                              </svg>
+                                              Anterior
+                                            </button>
+                                          </div>
+
+                                          <div class="-mt-px flex w-0 flex-1 justify-end">
+                                            <button type="button" [disabled]="next === null" (click)="PaginationByDay(1)" class="disabled:opacity-70 disabled:cursor-none inline-flex items-center border-t-2 border-transparent pt-4 pl-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
+                                              Siguiente
+                                              <!-- Heroicon name: mini/arrow-long-right -->
+                                              <svg class="ml-3 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                <path fill-rule="evenodd" d="M2 10a.75.75 0 01.75-.75h12.59l-2.1-1.95a.75.75 0 111.02-1.1l3.5 3.25a.75.75 0 010 1.1l-3.5 3.25a.75.75 0 11-1.02-1.1l2.1-1.95H2.75A.75.75 0 012 10z" clip-rule="evenodd" />
+                                              </svg>
+                                            </button>
+                                          </div>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="tabs-profileJustify" role="tabpanel" aria-labelledby="tabs-profile-tabJustify">
+                        <div class="px-4 pb-4 sm:px-6 lg:px-8 bg-gray-100 py-2 rounded-md">
+                            <header class="relative z-20 flex items-center justify-between border-b  border-gray-200 py-4 gap-x-1  lg:flex-none">
+                                <input type="date" [(ngModel)]="start_date" class="form-control block w-full px-3 mb-2 rounded-md  text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300  transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Select a date" />
+                                <input type="date" [(ngModel)]="end_date" class="form-control block w-full px-3 mb-2 rounded-md  text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300  transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Select a date" />
+                                <button type="button" (click)="GetAppointmentsByDatesInvtervalle()" [disabled]="start_date.length === 0 || end_date.length === 0" class="disabled:opacity-60 disabled:cursor-none focus:outline-none lg:ml-6 mb-2 rounded-md border border-transparent btn-primary py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Filtrar</button>
+                            </header>
+                            <div class="mt-8 flex flex-col">
+                                <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                    <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+                                      <div class="rounded-md bg-yellow-50 p-4" *ngIf="AppointmentsByIntervalle.length === 0">
+                                        <div class="flex">
+                                          <div class="flex-shrink-0">
+                                            <!-- Heroicon name: mini/exclamation-triangle -->
+                                            <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                              <path fill-rule="evenodd" d="M8.485 3.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 3.495zM10 6a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0v-3.5A.75.75 0 0110 6zm0 9a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+                                            </svg>
+                                          </div>
+                                          <div class="ml-3">
+                                            <h3 class="text-sm font-medium text-yellow-800">Oooops</h3>
+                                            <div class="mt-2 text-sm text-yellow-700">
+                                              <p>No encontramos citas entre estos días.</p>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                        <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg" *ngIf="AppointmentsByIntervalle.length">
+                                            <table class="min-w-full divide-y divide-gray-300">
+                                                <thead class="bg-gray-50">
+                                                    <tr>
+                                                        <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-primary sm:pl-6">Afiliado</th>
+                                                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-primary">Tipo de cita</th>
+                                                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-primary">Estado</th>
+                                                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-primary">Fecha</th>
+                                                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-primary">Hora</th>
+                                                        <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6"> </th>
+                                                      </tr>
+                                                </thead>
+                                                <tbody class="divide-y divide-gray-200 bg-white">
+                                                    <tr *ngFor="let a of AppointmentsByIntervalle">
+                                                      <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
+                                                          <div class="flex items-center">
+                                                              <div class="h-10 w-10 flex-shrink-0">
+                                                                <img *ngIf="a.user.avatar === null" class="h-10 w-10 rounded-full" src="assets/images/favicon.png" alt="">
+                                                                <img *ngIf="a.user.avatar !== null" class="h-10 w-10 rounded-full" [src]="a.user.avatar" alt="">
+                                                              </div>
+                                                              <div class="ml-4">
+                                                                  <div class="font-medium text-gray-900">{{a.user.first_name}} {{a.user.last_name}}</div>
+                                                              </div>
+                                                          </div>
+                                                      </td>
+                                                      <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-900">
+                                                          <span *ngIf="a.is_telemedicine" class="text-gray-900">Telemedicina</span>
+                                                          <span *ngIf="!a.is_telemedicine" class="text-gray-900">Presencial</span>
+                                                      </td>
+                                                      <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                                          <span class="inline-flex rounded-full bg-orange-100 px-2 text-xs font-semibold leading-5 text-orange-400">{{a.status}}</span>
+                                                      </td>
+                                                      <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-900 ">{{a.date}} </td>
+                                                      <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-900 ">{{a.start_time}} - {{a.end_time}}</td>
+                                                      <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                                                        <button  *ngIf="user_type === 3 && a.status === 'Agendada' || user_type === 4 && a.status === 'Agendada'  " data-bs-toggle="modal" data-bs-target="#exampleModalScrollable" (click)="GetAppointmentData(a.id, a.payment_reference, a.user.first_name, a.user.last_name, a.user.gender)"     type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white btn-primary hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Atender cita</button>
+                                                      </td>
+                                                    </tr>
+
+                                                    <!-- More people... -->
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                         <!-- Pagination  -->
+                                         <nav class="flex items-center justify-between mb-4 px-4  sm:px-0">
+                                          <div class="-mt-px flex w-0 flex-1">
+                                            <button type="button" [disabled]="previousIntervalle === null" (click)="PaginationByIntervalle(-1)" class="disabled:opacity-70 disabled:cursor-none inline-flex items-center border-t-2 border-transparent pt-4 pr-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
+                                              <!-- Heroicon name: mini/arrow-long-left -->
+                                              <svg class="mr-3 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                <path fill-rule="evenodd" d="M18 10a.75.75 0 01-.75.75H4.66l2.1 1.95a.75.75 0 11-1.02 1.1l-3.5-3.25a.75.75 0 010-1.1l3.5-3.25a.75.75 0 111.02 1.1l-2.1 1.95h12.59A.75.75 0 0118 10z" clip-rule="evenodd" />
+                                              </svg>
+                                              Anterior
+                                            </button>
+                                          </div>
+
+                                          <div class="-mt-px flex w-0 flex-1 justify-end">
+                                            <button type="button" [disabled]="nextIntervalle === null" (click)="PaginationByIntervalle(1)" class="disabled:opacity-70 disabled:cursor-none inline-flex items-center border-t-2 border-transparent pt-4 pl-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
+                                              Siguiente
+                                              <!-- Heroicon name: mini/arrow-long-right -->
+                                              <svg class="ml-3 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                <path fill-rule="evenodd" d="M2 10a.75.75 0 01.75-.75h12.59l-2.1-1.95a.75.75 0 111.02-1.1l3.5 3.25a.75.75 0 010 1.1l-3.5 3.25a.75.75 0 11-1.02-1.1l2.1-1.95H2.75A.75.75 0 012 10z" clip-rule="evenodd" />
+                                              </svg>
+                                            </button>
+                                          </div>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+ <!-- Modal -->
+ <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="exampleModalScrollable" tabindex="-1" aria-labelledby="exampleModalScrollableLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable relative w-full pointer-events-none">
+      <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
+          <div class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
+              <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalScrollableLabel">
+                  Admitir cita
+              </h5>
+              <button type="button" class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body relative p-4">
+              <div class="flex items-center space-x-5 mb-6">
+                <div>
+                  <h1 class="text-2xl font-bold text-cyan-900">{{first_name_user_date}} {{last_name_user_date}} </h1>
+                  <p class="text-sm font-medium text-gray-500">Afiliado <a  class="text-gray-900"> | {{gender_user_date}}</a> </p>
+                </div>
+              </div>
+              <div class=" items-center   space-x-3 mb-6 ">
+                  <div>
+                      <h1 class="text-xl font-bold text-primary">Escriba el codigo de la cita </h1>
+                      <div class="mt-1">
+                          <input type="text" name="text" id="text" [(ngModel)]="code2" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" placeholder=".........." a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
+              <button type="button" [disabled]="code !== code2 || code2.length === 0" (click)="ValidateCodeToAppointment()" data-bs-dismiss="modal" class="disabled:cursor-not-allowed disabled:opacity-60 inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out ml-1">
+                      Ingresar
+              </button>
+          </div>
+      </div>
+  </div>
+</div>

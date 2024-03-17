@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.btn-primary {
+    background-color: #542582 !important;
+}
+
+.text-primary {
+    color: #542582 !important;
+}
+
+.text-secondary {
+    color: #0AB5CB !important;
+}
+.btn-secondary {
+    background-color: #0AB5CB !important;
+}
+
+.border-secondary {
+    border: 1px solid #0AB5CB !important;
+}

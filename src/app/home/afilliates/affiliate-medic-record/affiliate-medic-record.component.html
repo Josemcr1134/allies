@@ -1,0 +1,444 @@
+<div class="min-h-full">
+
+
+    <main class="py-10">
+        <!-- Page header -->
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 md:flex md:items-center md:justify-between md:space-x-5 lg:max-w-7xl lg:px-8">
+            <div class="flex items-center space-x-5">
+                <div class="flex-shrink-0">
+                    <div class="relative">
+                        <img class="h-16 w-16 rounded-full" *ngIf="user_avatar !== null" [src]="user_avatar" alt="">
+                        <img class="h-16 w-16 rounded-full" *ngIf="user_avatar === null" src="assets/images/patient.png" alt="">
+                        <span class="absolute inset-0 shadow-inner rounded-full" aria-hidden="true"></span>
+                    </div>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold text-cyan-900">{{user_name}} </h1>
+                    <p class="text-sm font-medium text-gray-500">{{user_document}} <a href="#" class="text-gray-900"> | {{user_gender}}</a> </p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Medial-record-->
+        <div class="mt-8 max-w-3xl mx-auto grid grid-cols-1 gap-6  sm:px-6 lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-1">
+            <section aria-labelledby="Medial-record">
+              <div class="">
+                <div class="mx-auto max-w-6xl py-4 px-4 sm:px-6 lg:py-14 lg:px-8">
+                  <div class="mx-auto max-w-3xl text-center">
+                    <h2 class="text-3xl font-bold tracking-tight text-gray-900">Ordenamiento generado</h2>
+                    <p class="mt-4 text-lg text-gray-500">Sigue al pie de la letra todas las indicaciones generados por el especialista</p>
+                  </div>
+                  <dl class="mt-12 space-y-10 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 sm:space-y-0 lg:grid-cols-4 lg:gap-x-8">
+                    <div class="relative">
+                      <dt>
+                        <!-- Heroicon name: outline/check -->
+                        <svg class="absolute h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                        </svg>
+                        <p class="ml-9 text-lg font-medium leading-6 text-gray-900">Notas internas</p>
+                      </dt>
+                      <dd class="mt-2 ml-9 text-base text-gray-500">{{internal_notes}}.</dd>
+                    </div>
+
+                    <div class="relative">
+                      <dt>
+                        <!-- Heroicon name: outline/check -->
+                        <svg class="absolute h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                        </svg>
+                        <p class="ml-9 text-lg font-medium leading-6 text-gray-900">Razón de consulta</p>
+                      </dt>
+                      <dd class="mt-2 ml-9 text-base text-gray-500">{{reason_for_consultation}}.</dd>
+                    </div>
+
+                    <div class="relative">
+                      <dt>
+                        <!-- Heroicon name: outline/check -->
+                        <svg class="absolute h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                        </svg>
+                        <p class="ml-9 text-lg font-medium leading-6 text-gray-900">Recomendaciones</p>
+                      </dt>
+                      <dd class="mt-2 ml-9 text-base text-gray-500">{{recommendations}}.</dd>
+                    </div>
+
+                    <div class="relative">
+                      <dt>
+                        <!-- Heroicon name: outline/check -->
+                        <svg class="absolute h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                        </svg>
+                        <p class="ml-9 text-lg font-medium leading-6 text-gray-900">Diagnósticos</p>
+                      </dt>
+                      <dd class="mt-2 ml-9 text-base text-gray-500">{{diagnosis}} .</dd>
+                    </div>
+
+                    <div class="relative">
+                      <dt>
+                        <!-- Heroicon name: outline/check -->
+                        <svg class="absolute h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                        </svg>
+                        <p class="ml-9 text-lg font-medium leading-6 text-gray-900">Análisis y plan </p>
+                      </dt>
+                      <dd class="mt-2 ml-9 text-base text-gray-500">{{analysis_and_plan}}.</dd>
+                    </div>
+
+                    <div class="relative" *ngIf="start_date_inhability.length">
+                      <dt>
+                        <!-- Heroicon name: outline/check -->
+                        <svg class="absolute h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                        </svg>
+                        <p class="ml-9 text-lg font-medium leading-6 text-gray-900">Incapacidades </p>
+                      </dt>
+                      <dd class="mt-2 ml-9 text-base text-gray-500">Inicio: {{start_date_inhability}} &nbsp;| &nbsp; Fin: {{end_date_inhability}}</dd>
+                    </div>
+                  </dl>
+                  <div class="mt-8 flex flex-col">
+                    <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                        <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+                            <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+                                <table class="min-w-full divide-y divide-gray-300">
+                                    <thead class="bg-cyan-50">
+                                        <tr>
+                                            <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-cyan-900 sm:pl-6">Medicamento</th>
+                                            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-cyan-900">Dosis</th>
+                                            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-cyan-900">Frecuencia</th>
+                                            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-cyan-900">Duración</th>
+                                            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-cyan-900">Via</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-gray-200 bg-white">
+                                      <tr *ngFor="let m of Medicines">
+                                        <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{{m.medicine.trade_name}} </td>
+                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{m.quantity}}</td>
+                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{m.every}} </td>
+                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{m.during}}</td>
+                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{m.via}}</td>
+
+                                      </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+              </div>
+            </section>
+        </div>
+
+        <!-- Affiliate Background  -->
+        <div class=" mt-8 max-w-3xl mx-auto grid grid-cols-1 gap-6  sm:px-6 lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-2 ">
+
+            <!-- Clinic Background -->
+            <!-- <div class="bg-gray-100  shadow-lg sm:rounded-lg">
+                <div class="mt-10 sm:mt-0 px-4 py-5 sm:px-6">
+                    <h1 class="text-lg text-cyan-900 mt-6 font-medium leading-tight flex flex-nowrap mb-2">
+                        Antecedentes clinicos
+                    </h1>
+                    <p class="text-md-start text-sm leading-tight flex flex-nowrap text-gray-500 cursor-pointer">
+                        ¿Durante los ultimos 3 meses a sufrido usted de alguna de las siguientes alteraciones?
+                    </p>
+                    <div class=" mb-4  min-w-full   ">
+                        <form action="#" class="sm:col-span-1 " method="POST">
+                            <div class=" overflow-hidden">
+                                <div class="  bg-gray-100  ">
+                                    <fieldset>
+                                        <div class="mt-4 space-y-4">
+                                            <div class="flex items-center">
+                                                <input id="push-everything" name="push-notifications" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                                <label for="push-everything" class="ml-3 block text-sm font-medium text-gray-700"> Problemas de garganta </label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input id="push-email" name="push-notifications" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                                <label for="push-email" class="ml-3 block text-sm font-medium text-gray-700"> Depresion </label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input id="push-nothing" name="push-notifications" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                                <label for="push-nothing" class="ml-3 block text-sm font-medium text-gray-700"> Ahogo </label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input id="push-everything" name="push-notifications" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                                <label for="push-everything" class="ml-3 block text-sm font-medium text-gray-700"> Dificultad para respirar  </label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input id="push-email" name="push-notifications" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                                <label for="push-email" class="ml-3 block text-sm font-medium text-gray-700"> Dolor de oidos </label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input id="push-nothing" name="push-notifications" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                                <label for="push-nothing" class="ml-3 block text-sm font-medium text-gray-700"> Otitis </label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input id="push-nothing" name="push-notifications" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                                <label for="push-nothing" class="ml-3 block text-sm font-medium text-gray-700"> Dolor de cintura </label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input id="push-everything" name="push-notifications" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                                <label for="push-everything" class="ml-3 block text-sm font-medium text-gray-700"> Dolor de huesos o articulasiones </label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input id="push-email" name="push-notifications" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                                <label for="push-email" class="ml-3 block text-sm font-medium text-gray-700"> Diarrea o problemas intestinales </label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input id="push-nothing" name="push-notifications" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                                <label for="push-nothing" class="ml-3 block text-sm font-medium text-gray-700"> Dificultades para dormir </label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input id="push-nothing" name="push-notifications" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                                <label for="push-nothing" class="ml-3 block text-sm font-medium text-gray-700"> mareos y v vertigos </label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input id="push-nothing" name="push-notifications" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                                <label for="push-nothing" class="ml-3 block text-sm font-medium text-gray-700"> Dolor en el pecho </label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input id="push-nothing" name="push-notifications" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                                <label for="push-nothing" class="ml-3 block text-sm font-medium text-gray-700"> Dolor de espalda </label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input id="push-nothing" name="push-notifications" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                                <label for="push-nothing" class="ml-3 block text-sm font-medium text-gray-700"> Dolor de cintura </label>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-sm leading-5 text-gray-500">En general usted diría que su salud es</p>
+                        <fieldset class="mt-4">
+
+                            <div class="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
+                                <div class="flex items-center">
+                                    <input id="email" name="notification-method" type="radio" checked class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                    <label for="email" class="ml-3 block text-sm font-medium text-gray-700"> Excelente </label>
+                                </div>
+
+                                <div class="flex items-center">
+                                    <input id="sms" name="notification-method" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                    <label for="sms" class="ml-3 block text-sm font-medium text-gray-700"> Buena </label>
+                                </div>
+
+                                <div class="flex items-center">
+                                    <input id="push" name="notification-method" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                    <label for="push" class="ml-3 block text-sm font-medium text-gray-700"> Regular </label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input id="push" name="notification-method" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                    <label for="push" class="ml-3 block text-sm font-medium text-gray-700"> Mala </label>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-sm leading-5 text-gray-500">¿Cuándo fue su última visita al médico?</p>
+                        <fieldset class="mt-4">
+
+                            <div class="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10 ">
+                                <div class="flex items-center">
+                                    <input id="email" name="notification-method" type="radio" checked class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                    <label for="email" class="ml-3 block text-sm font-medium text-gray-700"> 1 a 4 semanas </label>
+                                </div>
+
+                                <div class="flex items-center">
+                                    <input id="sms" name="notification-method" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                    <label for="sms" class="ml-3 block text-sm font-medium text-gray-700"> 1 a 3 meses </label>
+                                </div>
+
+                                <div class="flex items-center">
+                                    <input id="push" name="notification-method" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                    <label for="push" class="ml-3 block text-sm font-medium text-gray-700"> 3 a 5 meses </label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input id="push" name="notification-method" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                    <label for="push" class="ml-3 block text-sm font-medium text-gray-700"> Mayor a 5 meses </label>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-sm leading-5 text-gray-500">¿Sufre usted actualmente de alguna enfermedad?</p>
+                        <fieldset class="mt-4">
+
+                            <div class="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10 ">
+                                <div class="flex items-center">
+                                    <input id="email" name="notification-method" type="radio" checked class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                    <label for="email" class="ml-3 block text-sm font-medium text-gray-700"> Si</label>
+                                </div>
+
+                                <div class="flex items-center">
+                                    <input id="sms" name="notification-method" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                    <label for="sms" class="ml-3 block text-sm font-medium text-gray-700"> No </label>
+                                </div>
+
+
+                            </div>
+
+                            <div class="my-2 lg:w-3/4">
+
+                                <input type="text" name="text" id="text" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="Cual" required>
+                            </div>
+
+                        </fieldset>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-sm leading-5 text-gray-500">¿Toma algún tipo de medicamentos actualmente?</p>
+                        <fieldset class="mt-4">
+
+                            <div class="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10 ">
+                                <div class="flex items-center">
+                                    <input id="email" name="notification-method" type="radio" checked class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                    <label for="email" class="ml-3 block text-sm font-medium text-gray-700"> Si</label>
+                                </div>
+
+                                <div class="flex items-center">
+                                    <input id="sms" name="notification-method" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                    <label for="sms" class="ml-3 block text-sm font-medium text-gray-700"> No </label>
+                                </div>
+
+
+                            </div>
+
+                            <div class="my-2 lg:w-3/4">
+
+                                <input type="text" name="text" id="text" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="Cual" required>
+                            </div>
+
+                        </fieldset>
+                    </div>
+                </div>
+            </div> -->
+            <!-- Family Background -->
+            <!-- <div class="bg-gray-100  shadow-lg sm:rounded-lg">
+                <div class="mt-10 sm:mt-0 px-4 py-5 sm:px-6">
+                    <h1 class="text-lg mt-6 font-medium leading-tight flex flex-nowrap mb-2 text-cyan-900 cursor-pointer">
+                        Antecedentes familiares
+                    </h1>
+                    <p class="text-md-start text-sm leading-tight flex flex-nowrap text-gray-500 cursor-pointer">
+                        ¿En su grupo familiar presenta algunas de las siguientes enfermedades?
+                    </p>
+                    <div class="grid mb-4  gap-y-6 gap-x-4 sm:grid-cols-1 ">
+                        <form action="#" class="sm:col-span-1 " method="POST">
+                            <div class=" overflow-hidden">
+                                <div class="bg-gray-100">
+                                    <fieldset>
+                                        <div class="mt-4 space-y-4">
+                                            <div class="flex items-center">
+                                                <input id="push-everything" name="push-notifications" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                                <label for="push-everything" class="ml-3 block text-sm font-medium text-gray-700"> Cancer </label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input id="push-email" name="push-notifications" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                                <label for="push-email" class="ml-3 block text-sm font-medium text-gray-700"> Ulcera </label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input id="push-nothing" name="push-notifications" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                                <label for="push-nothing" class="ml-3 block text-sm font-medium text-gray-700"> Hipertension arterial </label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input id="push-everything" name="push-notifications" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                                <label for="push-everything" class="ml-3 block text-sm font-medium text-gray-700"> Jaquecas  </label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input id="push-email" name="push-notifications" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                                <label for="push-email" class="ml-3 block text-sm font-medium text-gray-700"> Migrañas </label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input id="push-nothing" name="push-notifications" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                                <label for="push-nothing" class="ml-3 block text-sm font-medium text-gray-700"> Colesterol </label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input id="push-nothing" name="push-notifications" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                                <label for="push-nothing" class="ml-3 block text-sm font-medium text-gray-700"> Dermatitis </label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input id="push-everything" name="push-notifications" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                                <label for="push-everything" class="ml-3 block text-sm font-medium text-gray-700"> Diabetes </label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input id="push-email" name="push-notifications" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                                <label for="push-email" class="ml-3 block text-sm font-medium text-gray-700">Insomnio </label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input id="push-nothing" name="push-notifications" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                                <label for="push-nothing" class="ml-3 block text-sm font-medium text-gray-700"> Infarto </label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input id="push-nothing" name="push-notifications" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                                <label for="push-nothing" class="ml-3 block text-sm font-medium text-gray-700"> Dolores de esplada </label>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+
+                            </div>
+                        </form>
+
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-sm leading-5 text-gray-500">Señale el número de veces que realiza actividades deportivas</p>
+                        <fieldset class="mt-4">
+                            <div class="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
+                                <div class="flex items-center">
+                                    <input id="email" name="notification-method" type="radio" checked class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                    <label for="email" class="ml-3 block text-sm font-medium text-gray-700"> 1 vez por semana </label>
+                                </div>
+
+                                <div class="flex items-center">
+                                    <input id="sms" name="notification-method" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                    <label for="sms" class="ml-3 block text-sm font-medium text-gray-700"> 2 a 3 veces por semana </label>
+                                </div>
+
+                                <div class="flex items-center">
+                                    <input id="push" name="notification-method" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                    <label for="push" class="ml-3 block text-sm font-medium text-gray-700"> Más de 3 veces por semana </label>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-sm leading-5 text-gray-500">¿Ha sufrido de algún accidente deportivo?</p>
+                        <fieldset class="mt-4">
+
+                            <div class="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10 ">
+                                <div class="flex items-center">
+                                    <input id="email" name="notification-method" type="radio" checked class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                    <label for="email" class="ml-3 block text-sm font-medium text-gray-700"> Si</label>
+                                </div>
+
+                                <div class="flex items-center">
+                                    <input id="sms" name="notification-method" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
+                                    <label for="sms" class="ml-3 block text-sm font-medium text-gray-700"> No </label>
+                                </div>
+
+
+                            </div>
+
+                            <div class="my-2 lg:w-3/4">
+
+                                <input type="text" name="text" id="text" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="Cual" required>
+                            </div>
+
+                        </fieldset>
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- <div class="hidden sm:block" aria-hidden="true">
+                <div class="py-5">
+                    <div class="border-t border-gray-200"></div>
+                </div>
+            </div> -->
+        </div>
+
+
+    </main>
+</div>

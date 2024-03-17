@@ -1,0 +1,77 @@
+<div class=" sm:px-6 lg:px-8 ">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <h1 routerLink="/Home/Products&Services/ListP&S" class="text-2xl font-bold leading-tight  flex flex-nowrap text-cyan-600 cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 mt-1 w-5 font-bold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+              </svg> <span style="margin:0px 5px"> Nuevo servicio</span>
+        </h1>
+        <form class="space-y-8 divide-y divide-gray-200 sm:px-6 lg:px-8 mt-4 ">
+            <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5 ">
+                <div class="mt-6 sm:mt-5 space-y-6 sm:space-y-5">
+                    <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                        <label for="Service-title" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> Nombre* </label>
+                        <div class="mt-1 sm:mt-0 sm:col-span-2">
+                            <input type="text" name="Service-title" id="Service-title" [(ngModel)]="service_name" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-cyan-700 rounded-md">
+                        </div>
+                    </div>
+                    <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                        <label for="about" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> Descripción* </label>
+                        <div class="mt-1 sm:mt-0 sm:col-span-2">
+                            <textarea id="about" name="about" rows="3" [(ngModel)]="service_desc" class="max-w-lg shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-cyan-700 rounded-md"></textarea>
+                            <p class="mt-2 text-sm text-gray-500">Escribe brevemente sobre el servicio a ofrecer.</p>
+                        </div>
+                    </div>
+                    <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                        <label for="cover-photo" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> Imagen* </label>
+                        <div class="mt-1 sm:mt-0 sm:col-span-2">
+                            <ngx-dropzone (change)="onSelect($event)" class="max-w-lg block w-full" [multiple]='false' accept="image/jpeg,image/jpg,image/png">
+                                <ngx-dropzone-label>Sube la imagen de este servicio!</ngx-dropzone-label>
+                                <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f" [removable]="true" (removed)="onRemove(f)">
+                                    <ngx-dropzone-label></ngx-dropzone-label>
+                                </ngx-dropzone-image-preview>
+                            </ngx-dropzone>
+                        </div>
+                    </div>
+                    <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                        <label for="Service-price" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> Precio* </label>
+                        <div class="mt-1 sm:mt-0 sm:col-span-2">
+                            <input type="number" name="Service-price" id="Service-price" min='0' [(ngModel)]="service_fee" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-cyan-700 rounded-md">
+                        </div>
+                    </div>
+                    <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                        <label for="Service-external-price" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> Precio particular* </label>
+                        <div class="mt-1 sm:mt-0 sm:col-span-2">
+                            <input type="number" name="Service-external-price" id="Service-external-price" min='0' [(ngModel)]="service_external_fee" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-cyan-700 rounded-md">
+                        </div>
+                    </div>
+                    <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                        <label for="licenses" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Especialidades*</label>
+                        <div class="mt-1 sm:mt-0 sm:col-span-2">
+                            <select id="licenses" name="licenses" [(ngModel)]="specialty" class="mt-1 max-w-lg block w-full   rounded-md border-cyan-700 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                                    <option *ngFor="let s of Specialties" [value]="s.specialty.id">{{s.specialty.name}} </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                        <label for="about" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> Comentario* </label>
+                        <div class="mt-1 sm:mt-0 sm:col-span-2">
+                            <textarea id="about" name="about" rows="3" [(ngModel)]="service_comment" class="max-w-lg shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-cyan-700 rounded-md"></textarea>
+                            <p class="mt-2 text-sm text-gray-500">Escribe brevemente un comentario sobre el servicio a ofrecer.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-5">
+                <div class="flex justify-end">
+                    <button type="button" (click)="NewServiceRequest()" [disabled]="files.length === 0 || service_name.length  === 0 || service_desc.length === 0 || service_fee === 0 || service_external_fee === 0 ||specialty.length === 0 || service_comment.length === 0 "
+                        class="disabled:opacity-60 cursor-not-allowed ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-cyan-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Agregar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+
+</div>

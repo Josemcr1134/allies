@@ -1,0 +1,45 @@
+<div class="flex min-h-full">
+    <div class="flex flex-col justify-center flex-1 px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
+        <div class="w-full max-w-sm mx-auto lg:w-96">
+            <div>
+                <img class="w-auto h-12" src="assets/images/logo-netcare-horizontal.svg" alt="Workflow">
+
+            </div>
+
+            <div class="mt-8">
+
+
+                <div class="mt-6">
+                    <div class="space-y-6">
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700"> Correo electrónico </label>
+                            <div class="mt-1">
+                                <input id="email" name="email" [(ngModel)]="email" type="email" (keyup)="validarEmail()" class="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                <small class="text-red-600" *ngIf="emailStatus ===  false ">Este email no es válido </small>
+
+                            </div>
+                        </div>
+                        <div class="space-y-1">
+                            <label for="password" class="block text-sm font-medium text-gray-700"> Contraseña </label>
+                            <div class="mt-1">
+                                <input id="password" [(ngModel)]="password" name="password" type="password" autocomplete="current-password" required class="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-end">
+                            <div class="text-sm">
+                                <a [routerLink]="['/auth/Reset']" class="font-medium text-primary hover:text-indigo-500"> ¿Olvidaste tu contraseña? </a>
+                            </div>
+                        </div>
+                        <div>
+                            <button type="button" (click)="login()" (keyup.enter)="login()" class="flex justify-center w-full px-4 py-2 text-sm font-medium text-white border border-transparent rounded-md shadow-sm disabled:opacity-50 btn-primary hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Iniciar sesión</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="relative flex-1 hidden w-0 lg:block">
+        <img class="absolute inset-0 object-cover w-full h-full" src="assets/images/img-dashboard-netcare.jpg" alt="">
+    </div>
+</div>

@@ -1,0 +1,124 @@
+<div class=" sm:px-6 lg:px-8 ">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <h1 routerLink="/Home/Discounts/ListDiscounts" class="text-2xl font-bold leading-tight  flex flex-nowrap text-secondary cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 mt-1 w-5 font-bold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+              </svg> <span style="margin:0px 5px">Aplicar descuento </span>
+
+        </h1>
+
+        <div class="mt-8 lg:grid lg:grid-cols-3  lg:gap-x-8 lg:items-start">
+
+            <div class="bg-white lg:col-span-2 col-span-3" *ngIf="show_service === true">
+                <div class=" pb-16 sm:pb-24">
+
+                    <div class=" max-w-2xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+                        <div class="lg:grid lg:grid-cols-12 lg:auto-rows-min lg:gap-x-8">
+                            <div class="lg:col-start-8 lg:col-span-5">
+                                <div class="">
+                                    <h1 class="text-xl font-medium text-secondary">{{service_name}}</h1>
+                                    <p class="text-base font-medium text-gray-400">{{service_fee | currency}}</p>
+                                </div>
+
+                            </div>
+
+                            <!-- Image gallery -->
+                            <div class="mt-8 lg:mt-0 lg:col-start-1 lg:col-span-7 lg:row-start-1 lg:row-span-3">
+                                <h2 class="sr-only">Imagen</h2>
+
+                                <div class="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-3 lg:gap-8">
+                                    <img *ngIf="service_image !== null" [src]="service_image" class="lg:col-span-2 lg:row-span-2 rounded-lg">
+                                    <img *ngIf="service_image === null" src="assets/images/dates2.png" class="lg:col-span-2 lg:row-span-2 rounded-lg">
+
+
+                                </div>
+                            </div>
+
+                            <div class="mt-8 lg:col-span-5">
+
+                                <!-- Service details -->
+                                <div class="mt-10">
+
+
+                                    <div class="mt-4 prose prose-sm text-gray-500">
+                                        <p>{{service_description}}</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div [ngClass]="{'lg:col-span-3': show_service === false}" class="space-y-8 lg:col-span-1 col-span-3 ">
+                <div class="space-y-8  ">
+                    <div>
+                        <div>
+                            <h3 class="text-lg leading-6 font-medium text-secondary">Servicio</h3>
+                        </div>
+
+                        <div class="mt-3 mb-4 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                            <div class="sm:col-span-6">
+                                <div class="mt-1 flex rounded-md shadow-sm">
+                                    <select (change)="GetService()" [(ngModel)]="service" class=" block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                                        <option *ngFor="let af of AllyFees" [ngValue]="af">{{af.service.name}} </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div>
+                            <h3 class="text-lg leading-6 font-medium text-secondary">Descuento</h3>
+                        </div>
+
+                        <div class="mt-3 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                            <div class="sm:col-span-6">
+                                <div class="mt-1 flex rounded-md shadow-sm">
+                                    <input placeholder="Porcentaje de descuento %" type="number" [(ngModel)]="percentage" max="100" name="discount" id="discount" autocomplete="discount" class="flex-1 focus:ring-cyan-500 focus:border-indigo-500 block w-full min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300">
+                                </div>
+                                <small class="text-red-500" *ngIf="percentage < 0">El porcentaje no puede ser menor a 0</small>
+                                <small class="text-red-500" *ngIf="percentage > 100">El porcentaje no puede ser mayor a 100</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="">
+                        <div>
+                            <h3 class="text-lg leading-6 font-medium text-secondary">Periodo de duración</h3>
+                        </div>
+                        <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-1 lg:grid-cols-2">
+                            <div class="sm:col-span-2 md:col-span-1">
+                                <label for="initial-hour" class="block text-sm font-semibold text-gray-700"> Fecha  inicio </label>
+                                <div class="mt-1">
+                                    <input type="datetime-local" name="inital-date" id="inital-date" [(ngModel)]="start_date" placeholder="Feha de inicio" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+                                </div>
+                            </div>
+                            <div class="sm:col-span-2 md:col-span-1">
+                                <label for="initial-hour" class="block text-sm font-semibold text-gray-700"> Fecha finalización </label>
+
+                                <div class="mt-1">
+                                    <input type="datetime-local" name="finally-date" id="finally-date" [(ngModel)]="end_date" placeholder="Fecha finalización " class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="pt-5 w-full">
+                    <div class="flex justify-center">
+                        <button type="button" (click)="NewDiscount()" [disabled]="percentage > 100 || percentage < 0 || start_date.length === 0 || end_date.length === 0 || ally_fee.length === 0" class="disabled:opacity-60 disabled:cursor-not-allowed ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-semibold rounded-md text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">Aplicar descuento</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+</div>

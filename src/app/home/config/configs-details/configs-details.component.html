@@ -1,0 +1,505 @@
+<div class=" sm:px-6 lg:px-8 ">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <h1 routerLink="/Home/Configs/MyConfigs" class="text-2xl font-bold leading-tight  flex flex-nowrap text-secondary cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 mt-1 w-5 font-bold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+              </svg> <span style="margin:0px 5px">Consultas oftalmología </span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 mt-1 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+              </svg>
+        </h1>
+
+
+
+
+        <div class="mt-8 ">
+            <div class="">
+
+                <div class="mt-5 lg:w-full sm:w-full ">
+                    <form action="#" method="POST">
+                        <div class="shadow overflow-hidden sm:rounded-md">
+                            <div class="px-4 py-5 bg-gray-50 sm:p-6">
+                                <div class="grid grid-cols-6 gap-6">
+                                    <div class="col-span-6 sm:col-span-6">
+                                        <label for="Schedule-type" class="block text-sm font-semibold text-primary">Tipo de agenda</label>
+                                        <select id="Schedule-type" name="Schedule-type" autocomplete="Schedule-type-name" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm">
+                                            <option>Telemedicina</option>
+                                            <option>Presencial</option>
+                                            <option>Ambas</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-span-6 sm:col-span-6">
+
+                                        <fieldset>
+                                            <legend class="text-sm font-semibold text-gray-900">Dias de la semana disponibles</legend>
+                                            <div class="mt-4 border-t border-b border-gray-200 divide-y divide-gray-200">
+                                                <div class=" w-full  grid lg:grid-cols-5 sm:grid-cols-1  gap-x-3    py-4">
+                                                    <div class="lg:col-span-1 md:col-span-2 sm:col-span-1 my-auto ">
+                                                        <div class="  flex align-middle flex-nowrap ">
+                                                            <input id="person-1" name="person-1" type="checkbox" class="focus:ring-cyan-500 h-4 w-4 mx-2 text-cyan-600 border-gray-300 rounded">
+                                                            <label for="person-1" class="font-medium text-primary select-none">Lunes</label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="lg:col-span-3 sm:col-span-1 w-full ">
+                                                        <div class=" lg:justify-center w-full grid lg:grid-cols-2 sm:grid-cols-1 grid-rows-1 h-full">
+                                                            <span class="my-2  mx-2 lg:col-span-1 sm:col-span-2">
+                                                                <label for="monday-open-hour" class="block text-sm font-medium text-primary">Abre a la(s)</label>
+                                                                <input type="time" name="monday-open-hour" id="monday-open-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2  lg:col-span-1 sm:col-span-2">
+                                                                <label for="monday-close-hour" class="block text-sm font-medium text-primary">Cierra a la(s)</label>
+                                                                <input type="time" name="monday-close-hour" id="monday-close-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2 lg:col-span-1 sm:col-span-2" *ngIf="monday_schedule > 1 ">
+                                                                <label for="monday-open-hour" class="block text-sm font-medium text-primary">Abre a la(s)</label>
+                                                                <input type="time" name="monday-open-hour" id="monday-open-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2  lg:col-span-1 sm:col-span-2" *ngIf="monday_schedule > 1 ">
+                                                                <label for="monday-close-hour" class="block text-sm font-medium text-primary">Cierra a la(s)</label>
+                                                                <input type="time" name="monday-close-hour" id="monday-close-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2 lg:col-span-1 sm:col-span-2" *ngIf="monday_schedule > 2 ">
+                                                                <label for="monday-open-hour" class="block text-sm font-medium text-primary">Abre a la(s)</label>
+                                                                <input type="time" name="monday-open-hour" id="monday-open-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2  lg:col-span-1 sm:col-span-2" *ngIf="monday_schedule > 2 ">
+                                                                <label for="monday-close-hour" class="block text-sm font-medium text-primary">Cierra a la(s)</label>
+                                                                <input type="time" name="monday-close-hour" id="monday-close-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2 lg:col-span-1 sm:col-span-2" *ngIf="monday_schedule > 3 ">
+                                                                <label for="monday-open-hour" class="block text-sm font-medium text-primary">Abre a la(s)</label>
+                                                                <input type="time" name="monday-open-hour" id="monday-open-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2  lg:col-span-1 sm:col-span-2" *ngIf="monday_schedule > 3 ">
+                                                                <label for="monday-close-hour" class="block text-sm font-medium text-primary">Cierra a la(s)</label>
+                                                                <input type="time" name="monday-close-hour" id="monday-close-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="lg:col-span-1 md:col-span-2 sm:col-span-1 my-auto justify-center flex flex-nowrap">
+
+                                                        <svg xmlns="http://www.w3.org/2000/svg" (click)="addHourMonday(+1)" class="h-6 w-6 mx-2 text-cyan-600 cursor-pointer hover:text-cyan-800" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                                                          </svg>
+                                                        <svg *ngIf="monday_schedule > 1" xmlns="http://www.w3.org/2000/svg" (click)="addHourMonday(-1)" class="h-6 w-6 mx-2 text-red-600 cursor-pointer hover:text-red-800" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                          </svg>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mt-4 border-t border-b border-gray-200 divide-y divide-gray-200">
+                                                <div class=" w-full  grid lg:grid-cols-5 sm:grid-cols-1  gap-x-3    py-4">
+                                                    <div class="lg:col-span-1 md:col-span-2 sm:col-span-1 my-auto ">
+                                                        <div class="  flex align-middle flex-nowrap ">
+                                                            <input id="person-1" name="person-1" type="checkbox" class="focus:ring-cyan-500 h-4 w-4 mx-2 text-cyan-600 border-gray-300 rounded">
+                                                            <label for="person-1" class="font-medium text-primary select-none">Martes</label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="lg:col-span-3 sm:col-span-1 w-full ">
+                                                        <div class=" lg:justify-center w-full grid lg:grid-cols-2 sm:grid-cols-1 grid-rows-1 h-full">
+                                                            <span class="my-2  mx-2 lg:col-span-1 sm:col-span-2">
+                                                                <label for="monday-open-hour" class="block text-sm font-medium text-primary">Abre a la(s)</label>
+                                                                <input type="time" name="monday-open-hour" id="monday-open-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2  lg:col-span-1 sm:col-span-2">
+                                                                <label for="monday-close-hour" class="block text-sm font-medium text-primary">Cierra a la(s)</label>
+                                                                <input type="time" name="monday-close-hour" id="monday-close-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2 lg:col-span-1 sm:col-span-2" *ngIf="tuesday_schedule > 1 ">
+                                                                <label for="monday-open-hour" class="block text-sm font-medium text-primary">Abre a la(s)</label>
+                                                                <input type="time" name="monday-open-hour" id="monday-open-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2  lg:col-span-1 sm:col-span-2" *ngIf="tuesday_schedule > 1 ">
+                                                                <label for="monday-close-hour" class="block text-sm font-medium text-primary">Cierra a la(s)</label>
+                                                                <input type="time" name="monday-close-hour" id="monday-close-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2 lg:col-span-1 sm:col-span-2" *ngIf="tuesday_schedule > 2 ">
+                                                                <label for="monday-open-hour" class="block text-sm font-medium text-primary">Abre a la(s)</label>
+                                                                <input type="time" name="monday-open-hour" id="monday-open-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2  lg:col-span-1 sm:col-span-2" *ngIf="tuesday_schedule > 2 ">
+                                                                <label for="monday-close-hour" class="block text-sm font-medium text-primary">Cierra a la(s)</label>
+                                                                <input type="time" name="monday-close-hour" id="monday-close-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2 lg:col-span-1 sm:col-span-2" *ngIf="tuesday_schedule > 3 ">
+                                                                <label for="monday-open-hour" class="block text-sm font-medium text-primary">Abre a la(s)</label>
+                                                                <input type="time" name="monday-open-hour" id="monday-open-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2  lg:col-span-1 sm:col-span-2" *ngIf="tuesday_schedule > 3 ">
+                                                                <label for="monday-close-hour" class="block text-sm font-medium text-primary">Cierra a la(s)</label>
+                                                                <input type="time" name="monday-close-hour" id="monday-close-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="lg:col-span-1 md:col-span-2 sm:col-span-1 my-auto justify-center flex flex-nowrap">
+
+                                                        <svg xmlns="http://www.w3.org/2000/svg" (click)="addTuesday(+1)" class="h-6 w-6 mx-2 text-cyan-600 cursor-pointer hover:text-cyan-800" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                                                          </svg>
+                                                        <svg *ngIf="tuesday_schedule > 1" xmlns="http://www.w3.org/2000/svg" (click)="addTuesday(-1)" class="h-6 w-6 mx-2 text-red-600 cursor-pointer hover:text-red-800" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                          </svg>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mt-4 border-t border-b border-gray-200 divide-y divide-gray-200">
+                                                <div class=" w-full  grid lg:grid-cols-5 sm:grid-cols-1  gap-x-3    py-4">
+                                                    <div class="lg:col-span-1 md:col-span-2 sm:col-span-1 my-auto ">
+                                                        <div class="  flex align-middle flex-nowrap ">
+                                                            <input id="person-1" name="person-1" type="checkbox" class="focus:ring-cyan-500 h-4 w-4 mx-2 text-cyan-600 border-gray-300 rounded">
+                                                            <label for="person-1" class="font-medium text-primary select-none">Miercoles</label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="lg:col-span-3 sm:col-span-1 w-full ">
+                                                        <div class=" lg:justify-center w-full grid lg:grid-cols-2 sm:grid-cols-1 grid-rows-1 h-full">
+                                                            <span class="my-2  mx-2 lg:col-span-1 sm:col-span-2">
+                                                                <label for="monday-open-hour" class="block text-sm font-medium text-primary">Abre a la(s)</label>
+                                                                <input type="time" name="monday-open-hour" id="monday-open-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2  lg:col-span-1 sm:col-span-2">
+                                                                <label for="monday-close-hour" class="block text-sm font-medium text-primary">Cierra a la(s)</label>
+                                                                <input type="time" name="monday-close-hour" id="monday-close-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2 lg:col-span-1 sm:col-span-2" *ngIf="wednesday_schedule > 1 ">
+                                                                <label for="monday-open-hour" class="block text-sm font-medium text-primary">Abre a la(s)</label>
+                                                                <input type="time" name="monday-open-hour" id="monday-open-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2  lg:col-span-1 sm:col-span-2" *ngIf="wednesday_schedule > 1 ">
+                                                                <label for="monday-close-hour" class="block text-sm font-medium text-primary">Cierra a la(s)</label>
+                                                                <input type="time" name="monday-close-hour" id="monday-close-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2 lg:col-span-1 sm:col-span-2" *ngIf="wednesday_schedule > 2 ">
+                                                                <label for="monday-open-hour" class="block text-sm font-medium text-primary">Abre a la(s)</label>
+                                                                <input type="time" name="monday-open-hour" id="monday-open-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2  lg:col-span-1 sm:col-span-2" *ngIf="wednesday_schedule > 2 ">
+                                                                <label for="monday-close-hour" class="block text-sm font-medium text-primary">Cierra a la(s)</label>
+                                                                <input type="time" name="monday-close-hour" id="monday-close-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2 lg:col-span-1 sm:col-span-2" *ngIf="wednesday_schedule > 3 ">
+                                                                <label for="monday-open-hour" class="block text-sm font-medium text-primary">Abre a la(s)</label>
+                                                                <input type="time" name="monday-open-hour" id="monday-open-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2  lg:col-span-1 sm:col-span-2" *ngIf="wednesday_schedule > 3 ">
+                                                                <label for="monday-close-hour" class="block text-sm font-medium text-primary">Cierra a la(s)</label>
+                                                                <input type="time" name="monday-close-hour" id="monday-close-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="lg:col-span-1 md:col-span-2 sm:col-span-1 my-auto justify-center flex flex-nowrap">
+
+                                                        <svg xmlns="http://www.w3.org/2000/svg" (click)="addWednesday(+1)" class="h-6 w-6 mx-2 text-cyan-600 cursor-pointer hover:text-cyan-800" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                                                          </svg>
+                                                        <svg *ngIf="wednesday_schedule > 1" xmlns="http://www.w3.org/2000/svg" (click)="addWednesday(-1)" class="h-6 w-6 mx-2 text-red-600 cursor-pointer hover:text-red-800" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                          </svg>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mt-4 border-t border-b border-gray-200 divide-y divide-gray-200">
+                                                <div class=" w-full  grid lg:grid-cols-5 sm:grid-cols-1  gap-x-3    py-4">
+                                                    <div class="lg:col-span-1 md:col-span-2 sm:col-span-1 my-auto ">
+                                                        <div class="  flex align-middle flex-nowrap ">
+                                                            <input id="person-1" name="person-1" type="checkbox" class="focus:ring-cyan-500 h-4 w-4 mx-2 text-cyan-600 border-gray-300 rounded">
+                                                            <label for="person-1" class="font-medium text-primary select-none">Jueves</label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="lg:col-span-3 sm:col-span-1 w-full ">
+                                                        <div class=" lg:justify-center w-full grid lg:grid-cols-2 sm:grid-cols-1 grid-rows-1 h-full">
+                                                            <span class="my-2  mx-2 lg:col-span-1 sm:col-span-2">
+                                                                <label for="monday-open-hour" class="block text-sm font-medium text-primary">Abre a la(s)</label>
+                                                                <input type="time" name="monday-open-hour" id="monday-open-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2  lg:col-span-1 sm:col-span-2">
+                                                                <label for="monday-close-hour" class="block text-sm font-medium text-primary">Cierra a la(s)</label>
+                                                                <input type="time" name="monday-close-hour" id="monday-close-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2 lg:col-span-1 sm:col-span-2" *ngIf="thursday_schedule > 1 ">
+                                                                <label for="monday-open-hour" class="block text-sm font-medium text-primary">Abre a la(s)</label>
+                                                                <input type="time" name="monday-open-hour" id="monday-open-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2  lg:col-span-1 sm:col-span-2" *ngIf="thursday_schedule > 1 ">
+                                                                <label for="monday-close-hour" class="block text-sm font-medium text-primary">Cierra a la(s)</label>
+                                                                <input type="time" name="monday-close-hour" id="monday-close-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2 lg:col-span-1 sm:col-span-2" *ngIf="thursday_schedule > 2 ">
+                                                                <label for="monday-open-hour" class="block text-sm font-medium text-primary">Abre a la(s)</label>
+                                                                <input type="time" name="monday-open-hour" id="monday-open-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2  lg:col-span-1 sm:col-span-2" *ngIf="thursday_schedule > 2 ">
+                                                                <label for="monday-close-hour" class="block text-sm font-medium text-primary">Cierra a la(s)</label>
+                                                                <input type="time" name="monday-close-hour" id="monday-close-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2 lg:col-span-1 sm:col-span-2" *ngIf="thursday_schedule > 3 ">
+                                                                <label for="monday-open-hour" class="block text-sm font-medium text-primary">Abre a la(s)</label>
+                                                                <input type="time" name="monday-open-hour" id="monday-open-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2  lg:col-span-1 sm:col-span-2" *ngIf="thursday_schedule > 3 ">
+                                                                <label for="monday-close-hour" class="block text-sm font-medium text-primary">Cierra a la(s)</label>
+                                                                <input type="time" name="monday-close-hour" id="monday-close-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="lg:col-span-1 md:col-span-2 sm:col-span-1 my-auto justify-center flex flex-nowrap">
+
+                                                        <svg xmlns="http://www.w3.org/2000/svg" (click)="addThursday(+1)" class="h-6 w-6 mx-2 text-cyan-600 cursor-pointer hover:text-cyan-800" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                                                          </svg>
+                                                        <svg *ngIf="thursday_schedule > 1" xmlns="http://www.w3.org/2000/svg" (click)="addThursday(-1)" class="h-6 w-6 mx-2 text-red-600 cursor-pointer hover:text-red-800" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                          </svg>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mt-4 border-t border-b border-gray-200 divide-y divide-gray-200">
+                                                <div class=" w-full  grid lg:grid-cols-5 sm:grid-cols-1  gap-x-3    py-4">
+                                                    <div class="lg:col-span-1 md:col-span-2 sm:col-span-1 my-auto ">
+                                                        <div class="  flex align-middle flex-nowrap ">
+                                                            <input id="person-1" name="person-1" type="checkbox" class="focus:ring-cyan-500 h-4 w-4 mx-2 text-cyan-600 border-gray-300 rounded">
+                                                            <label for="person-1" class="font-medium text-primary select-none">Viernes</label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="lg:col-span-3 sm:col-span-1 w-full ">
+                                                        <div class=" lg:justify-center w-full grid lg:grid-cols-2 sm:grid-cols-1 grid-rows-1 h-full">
+                                                            <span class="my-2  mx-2 lg:col-span-1 sm:col-span-2">
+                                                                <label for="monday-open-hour" class="block text-sm font-medium text-primary">Abre a la(s)</label>
+                                                                <input type="time" name="monday-open-hour" id="monday-open-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2  lg:col-span-1 sm:col-span-2">
+                                                                <label for="monday-close-hour" class="block text-sm font-medium text-primary">Cierra a la(s)</label>
+                                                                <input type="time" name="monday-close-hour" id="monday-close-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2 lg:col-span-1 sm:col-span-2" *ngIf="friday_schedule > 1 ">
+                                                                <label for="monday-open-hour" class="block text-sm font-medium text-primary">Abre a la(s)</label>
+                                                                <input type="time" name="monday-open-hour" id="monday-open-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2  lg:col-span-1 sm:col-span-2" *ngIf="friday_schedule > 1 ">
+                                                                <label for="monday-close-hour" class="block text-sm font-medium text-primary">Cierra a la(s)</label>
+                                                                <input type="time" name="monday-close-hour" id="monday-close-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2 lg:col-span-1 sm:col-span-2" *ngIf="friday_schedule > 2 ">
+                                                                <label for="monday-open-hour" class="block text-sm font-medium text-primary">Abre a la(s)</label>
+                                                                <input type="time" name="monday-open-hour" id="monday-open-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2  lg:col-span-1 sm:col-span-2" *ngIf="friday_schedule > 2 ">
+                                                                <label for="monday-close-hour" class="block text-sm font-medium text-primary">Cierra a la(s)</label>
+                                                                <input type="time" name="monday-close-hour" id="monday-close-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2 lg:col-span-1 sm:col-span-2" *ngIf="friday_schedule > 3 ">
+                                                                <label for="monday-open-hour" class="block text-sm font-medium text-primary">Abre a la(s)</label>
+                                                                <input type="time" name="monday-open-hour" id="monday-open-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2  lg:col-span-1 sm:col-span-2" *ngIf="friday_schedule > 3 ">
+                                                                <label for="monday-close-hour" class="block text-sm font-medium text-primary">Cierra a la(s)</label>
+                                                                <input type="time" name="monday-close-hour" id="monday-close-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="lg:col-span-1 md:col-span-2 sm:col-span-1 my-auto justify-center flex flex-nowrap">
+
+                                                        <svg xmlns="http://www.w3.org/2000/svg" (click)="addFriday(+1)" class="h-6 w-6 mx-2 text-cyan-600 cursor-pointer hover:text-cyan-800" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                                                          </svg>
+                                                        <svg *ngIf="friday_schedule > 1" xmlns="http://www.w3.org/2000/svg" (click)="addFriday(-1)" class="h-6 w-6 mx-2 text-red-600 cursor-pointer hover:text-red-800" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                          </svg>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mt-4 border-t border-b border-gray-200 divide-y divide-gray-200">
+                                                <div class=" w-full  grid lg:grid-cols-5 sm:grid-cols-1  gap-x-3    py-4">
+                                                    <div class="lg:col-span-1 md:col-span-2 sm:col-span-1 my-auto ">
+                                                        <div class="  flex align-middle flex-nowrap ">
+                                                            <input id="person-1" name="person-1" type="checkbox" class="focus:ring-cyan-500 h-4 w-4 mx-2 text-cyan-600 border-gray-300 rounded">
+                                                            <label for="person-1" class="font-medium text-primary select-none">Sabado</label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="lg:col-span-3 sm:col-span-1 w-full ">
+                                                        <div class=" lg:justify-center w-full grid lg:grid-cols-2 sm:grid-cols-1 grid-rows-1 h-full">
+                                                            <span class="my-2  mx-2 lg:col-span-1 sm:col-span-2">
+                                                                <label for="monday-open-hour" class="block text-sm font-medium text-primary">Abre a la(s)</label>
+                                                                <input type="time" name="monday-open-hour" id="monday-open-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2  lg:col-span-1 sm:col-span-2">
+                                                                <label for="monday-close-hour" class="block text-sm font-medium text-primary">Cierra a la(s)</label>
+                                                                <input type="time" name="monday-close-hour" id="monday-close-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2 lg:col-span-1 sm:col-span-2" *ngIf="satuday_schedule > 1 ">
+                                                                <label for="monday-open-hour" class="block text-sm font-medium text-primary">Abre a la(s)</label>
+                                                                <input type="time" name="monday-open-hour" id="monday-open-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2  lg:col-span-1 sm:col-span-2" *ngIf="satuday_schedule > 1 ">
+                                                                <label for="monday-close-hour" class="block text-sm font-medium text-primary">Cierra a la(s)</label>
+                                                                <input type="time" name="monday-close-hour" id="monday-close-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2 lg:col-span-1 sm:col-span-2" *ngIf="satuday_schedule > 2 ">
+                                                                <label for="monday-open-hour" class="block text-sm font-medium text-primary">Abre a la(s)</label>
+                                                                <input type="time" name="monday-open-hour" id="monday-open-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2  lg:col-span-1 sm:col-span-2" *ngIf="satuday_schedule > 2 ">
+                                                                <label for="monday-close-hour" class="block text-sm font-medium text-primary">Cierra a la(s)</label>
+                                                                <input type="time" name="monday-close-hour" id="monday-close-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2 lg:col-span-1 sm:col-span-2" *ngIf="satuday_schedule > 3 ">
+                                                                <label for="monday-open-hour" class="block text-sm font-medium text-primary">Abre a la(s)</label>
+                                                                <input type="time" name="monday-open-hour" id="monday-open-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2  lg:col-span-1 sm:col-span-2" *ngIf="satuday_schedule > 3 ">
+                                                                <label for="monday-close-hour" class="block text-sm font-medium text-primary">Cierra a la(s)</label>
+                                                                <input type="time" name="monday-close-hour" id="monday-close-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="lg:col-span-1 md:col-span-2 sm:col-span-1 my-auto justify-center flex flex-nowrap">
+
+                                                        <svg xmlns="http://www.w3.org/2000/svg" (click)="addSatuday(+1)" class="h-6 w-6 mx-2 text-cyan-600 cursor-pointer hover:text-cyan-800" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                                                          </svg>
+                                                        <svg *ngIf="satuday_schedule > 1" xmlns="http://www.w3.org/2000/svg" (click)="addSatuday(-1)" class="h-6 w-6 mx-2 text-red-600 cursor-pointer hover:text-red-800" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                          </svg>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="mt-4 border-t border-b border-gray-200 divide-y divide-gray-200">
+                                                <div class=" w-full  grid lg:grid-cols-5 sm:grid-cols-1  gap-x-3    py-4">
+                                                    <div class="lg:col-span-1 md:col-span-2 sm:col-span-1 my-auto ">
+                                                        <div class="  flex align-middle flex-nowrap ">
+                                                            <input id="person-1" name="person-1" type="checkbox" class="focus:ring-cyan-500 h-4 w-4 mx-2 text-cyan-600 border-gray-300 rounded">
+                                                            <label for="person-1" class="font-medium text-primary select-none">Domingo</label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="lg:col-span-3 sm:col-span-1 w-full ">
+                                                        <div class=" lg:justify-center w-full grid lg:grid-cols-2 sm:grid-cols-1 grid-rows-1 h-full">
+                                                            <span class="my-2  mx-2 lg:col-span-1 sm:col-span-2">
+                                                                <label for="monday-open-hour" class="block text-sm font-medium text-primary">Abre a la(s)</label>
+                                                                <input type="time" name="monday-open-hour" id="monday-open-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2  lg:col-span-1 sm:col-span-2">
+                                                                <label for="monday-close-hour" class="block text-sm font-medium text-primary">Cierra a la(s)</label>
+                                                                <input type="time" name="monday-close-hour" id="monday-close-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2 lg:col-span-1 sm:col-span-2" *ngIf="sunday_schedule > 1 ">
+                                                                <label for="monday-open-hour" class="block text-sm font-medium text-primary">Abre a la(s)</label>
+                                                                <input type="time" name="monday-open-hour" id="monday-open-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2  lg:col-span-1 sm:col-span-2" *ngIf="sunday_schedule > 1 ">
+                                                                <label for="monday-close-hour" class="block text-sm font-medium text-primary">Cierra a la(s)</label>
+                                                                <input type="time" name="monday-close-hour" id="monday-close-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2 lg:col-span-1 sm:col-span-2" *ngIf="sunday_schedule > 2 ">
+                                                                <label for="monday-open-hour" class="block text-sm font-medium text-primary">Abre a la(s)</label>
+                                                                <input type="time" name="monday-open-hour" id="monday-open-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2  lg:col-span-1 sm:col-span-2" *ngIf="sunday_schedule > 2 ">
+                                                                <label for="monday-close-hour" class="block text-sm font-medium text-primary">Cierra a la(s)</label>
+                                                                <input type="time" name="monday-close-hour" id="monday-close-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2 lg:col-span-1 sm:col-span-2" *ngIf="sunday_schedule > 3 ">
+                                                                <label for="monday-open-hour" class="block text-sm font-medium text-primary">Abre a la(s)</label>
+                                                                <input type="time" name="monday-open-hour" id="monday-open-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                            <span class="my-2  mx-2  lg:col-span-1 sm:col-span-2" *ngIf="sunday_schedule > 3 ">
+                                                                <label for="monday-close-hour" class="block text-sm font-medium text-primary">Cierra a la(s)</label>
+                                                                <input type="time" name="monday-close-hour" id="monday-close-hour" autocomplete="given-name" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full  shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="lg:col-span-1 md:col-span-2 sm:col-span-1 my-auto justify-center flex flex-nowrap">
+
+                                                        <svg xmlns="http://www.w3.org/2000/svg" (click)="addSunday(+1)" class="h-6 w-6 mx-2 text-cyan-600 cursor-pointer hover:text-cyan-800" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                                                          </svg>
+                                                        <svg *ngIf="sunday_schedule > 1" xmlns="http://www.w3.org/2000/svg" (click)="addSunday(-1)" class="h-6 w-6 mx-2 text-red-600 cursor-pointer hover:text-red-800" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                          </svg>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+                                <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white btn-primary hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">Guardar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="mt-8">
+            <div class="w-full">
+                <h1 routerLink="/Home/Configs/MyConfigs" class="text-2xl font-bold leading-tight  flex flex-nowrap text-secondary cursor-pointer">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 mt-1 w-5 font-bold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                    </svg>
+                    <span style="margin:0px 5px">Servicio</span>
+                </h1>
+                <p class="mt-2 text-sm font-medium text-gray-500">Información del servicio</p>
+                <div class="mt-5 ">
+                    <form action="#" method="POST">
+                        <div class="shadow overflow-hidden sm:rounded-md">
+                            <div class="px-4 py-5 bg-gray-50 sm:p-6">
+                                <div class="grid grid-cols-6 gap-6">
+
+
+                                    <div class="col-span-6 ">
+                                        <label for="service" class="block text-sm font-semibold text-primary">Servicio ofrecido*</label>
+                                        <select id="service" name="service" autocomplete="service-name" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm">
+                                            <option>Consulta general</option>
+                                            <option>Consulta especializada</option>
+                                            <option>Consulta XY</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-span-6">
+                                        <label for="meet-duration" class="block text-sm font-semibold text-primary">Tiempo del servicio (Indicar el tiempo de la atención)*</label>
+                                        <input type="time" name="meet-duration" id="meet-duration" autocomplete="meet-duration" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    </div>
+
+                                    <div class="col-span-6 sm:col-span-6 ">
+                                        <label for="numbeOfPeopleCanApply" class="block text-sm font-semibold text-primary">Número de cupos (Los calcula según el tiempo de atención, Campo informativo)</label>
+                                        <input type="number" value="50" name="numbeOfPeopleCanApply" id="numbeOfPeopleCanApply" autocomplete="address-level2" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+                                <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white btn-primary hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">Guardar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+    </div>
+
+
+
+</div>

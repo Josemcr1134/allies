@@ -1,0 +1,561 @@
+<div class=" sm:px-6 lg:px-8 ">
+    <header>
+        <div class=" mx-auto mt-4 px-4 sm:px-6 lg:px-8">
+            <h1 class="text-2xl font-bold leading-tight flex flex-nowrap text-secondary cursor-pointer">
+                Historia Clínica
+            </h1>
+        </div>
+    </header>
+    <div class="mt-8">
+        <div class="px-4 mt-8 sm:px-6 lg:px-8 ">
+            <div class="sm:flex justify-between sm:items-center">
+                <div class="flex items-center space-x-5">
+                    <div class="flex-shrink-0">
+                        <div class="relative">
+                            <img class="h-16 w-16 rounded-full" *ngIf="affiliate_avatar === null" src="assets/images/patient.png" alt="">
+                            <img class="h-16 w-16 rounded-full" *ngIf="affiliate_avatar !== null" [src]="affiliate_avatar" alt="">
+                            <span class="absolute inset-0 shadow-inner rounded-full" aria-hidden="true"></span>
+                        </div>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-cyan-600">{{affiliate_name}} </h1>
+                        <p class="text-sm font-medium text-gray-500">{{affiliate_document}} <a class="text-cyan-600"> | {{affiliate_gender}}</a> </p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="mt-8 flex flex-col">
+                <div class="mt-10 sm:mt-0">
+                    <div class="md:grid md:grid-cols-2 md:gap-6">
+                        <div class="mt-5 md:mt-0 md:col-span-2">
+                            <div class=" overflow-hidden sm:rounded-md">
+                                <div class="px-4  bg-gray-50 sm:p-6">
+                                    <div class="grid grid-cols-6 gap-6">
+                                        <div class="col-span-6 sm:col-span-6">
+                                            <label for="internal-notes" class="block text-sm font-semibold text-cyan-600">Notas internas</label>
+                                            <div class="mt-1">
+                                                <textarea id="about" [(ngModel)]="internal_notes" name="about" rows="2" class="shadow-sm focus:ring-cyan-500 focus:border-cyan-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-span-6 sm:col-span-6">
+                                            <label for="internal-notes" class="block text-sm font-semibold text-cyan-600">Motivo de la consulta/Enfermedad actual</label>
+                                            <div class="mt-1">
+                                                <textarea id="about" [(ngModel)]="reason_for_consultation" name="about" rows="2" class="shadow-sm focus:ring-cyan-500 focus:border-cyan-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-span-6 sm:col-span-6">
+                                            <label for="internal-notes" class="block text-sm font-semibold text-cyan-600">Observaciones</label>
+                                            <div class="mt-1">
+                                                <textarea id="about" [(ngModel)]="observations" name="about" rows="3" class="shadow-sm focus:ring-cyan-500 focus:border-cyan-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-span-6 sm:col-span-6">
+                                            <label for="internal-notes" class="block text-sm font-semibold text-cyan-600">Diagnóstico</label>
+                                            <div class="mt-1">
+                                                <textarea id="about" [(ngModel)]="diagnosis" name="about" rows="2" class="shadow-sm focus:ring-cyan-500 focus:border-cyan-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-span-6 sm:col-span-6">
+                                            <label for="analysis_and_plan" class="block text-sm font-semibold text-cyan-600">Análisis y plan </label>
+                                            <div class="mt-1">
+                                                <textarea id="analysis_and_plan" [(ngModel)]="analysis_and_plan" name="analysis_and_plan" rows="2" class="shadow-sm focus:ring-cyan-500 focus:border-cyan-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-span-6 sm:col-span-6">
+                                            <label for="recommendations" class="block text-sm font-semibold text-cyan-600">Recomendaciones </label>
+                                            <div class="mt-1">
+                                                <textarea id="recommendations" [(ngModel)]="recommendations" name="recommendations" rows="2" class="shadow-sm focus:ring-cyan-500 focus:border-cyan-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"></textarea>
+                                            </div>
+                                        </div>
+                                        <!-- CIE 10 FORM  -->
+                                        <div class="col-span-6 sm:col-span-6">
+                                          <label for="recommendations" class="block text-sm font-semibold text-cyan-600">Impresiones diagnósticas en hallazgos </label>
+
+                                              <div class="grid grid-cols-2 gap-4 mt-1">
+                                                <div class="form-group mb-6">
+                                                    <label  class="block text-sm font-medium text-cyan-700 mb-1">CIE10</label>
+                                                    <select [(ngModel)]="diagnosticImpresion" class="form-select appearance-none
+                                                      block
+                                                      w-full
+                                                      px-3
+                                                      py-1.5
+                                                      text-base
+                                                      font-normal
+                                                      text-gray-700
+                                                      bg-white bg-clip-padding bg-no-repeat
+                                                      border border-solid border-gray-300
+                                                      rounded
+                                                      transition
+                                                      ease-in-out
+                                                      m-0
+                                                      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
+                                                        <option *ngFor="let c of DiagnosticsImpressions" [value]="c.id">{{c.code}} | {{c.description}}</option>
+
+                                                    </select>
+                                                    <!-- Pagination -->
+                                                    <nav class="flex items-center justify-between border-t border-cyan-200 px-4 sm:px-0 mt-4">
+                                                      <div class="-mt-px flex w-0 flex-1">
+                                                        <button (click)="PaginationCIE10(-1)" type="button" [disabled]="previousCIE10 === null" class="disabled:opacity-60 disabled:cursor-not-allowed inline-flex items-center border-t-2 border-transparent pt-4 pr-1 text-sm font-medium text-cyan-500 hover:border-cyan-300 hover:text-cyan-700">
+                                                          <!-- Heroicon name: mini/arrow-long-left -->
+                                                          <svg class="mr-3 h-5 w-5 text-cyan-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                            <path fill-rule="evenodd" d="M18 10a.75.75 0 01-.75.75H4.66l2.1 1.95a.75.75 0 11-1.02 1.1l-3.5-3.25a.75.75 0 010-1.1l3.5-3.25a.75.75 0 111.02 1.1l-2.1 1.95h12.59A.75.75 0 0118 10z" clip-rule="evenodd" />
+                                                          </svg>
+                                                          Regresar
+                                                        </button>
+                                                      </div>
+
+                                                      <div class="-mt-px flex w-0 flex-1 justify-end">
+                                                        <button (click)="PaginationCIE10(1)" type="button" [disabled]="nextCIE10 === null" class="disabled:opacity-60 disabled:cursor-not-allowed inline-flex items-center border-t-2 border-transparent pt-4 pl-1 text-sm font-medium text-cyan-500 hover:border-cyan-300 hover:text-cyan-700">
+                                                          Siguiente
+                                                          <!-- Heroicon name: mini/arrow-long-right -->
+                                                          <svg class="ml-3 h-5 w-5 text-cyan-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                            <path fill-rule="evenodd" d="M2 10a.75.75 0 01.75-.75h12.59l-2.1-1.95a.75.75 0 111.02-1.1l3.5 3.25a.75.75 0 010 1.1l-3.5 3.25a.75.75 0 11-1.02-1.1l2.1-1.95H2.75A.75.75 0 012 10z" clip-rule="evenodd" />
+                                                          </svg>
+                                                        </button>
+                                                      </div>
+                                                    </nav>
+                                                </div>
+                                                <div class="form-group mb-6">
+                                                  <label  class="block text-sm font-medium text-cyan-700 mb-1">Lateralidad</label>
+                                                  <select [(ngModel)]="laterality" class="form-select appearance-none
+                                                      block
+                                                      w-full
+                                                      px-3
+                                                      py-1.5
+                                                      text-base
+                                                      font-normal
+                                                      text-gray-700
+                                                      bg-white bg-clip-padding bg-no-repeat
+                                                      border border-solid border-gray-300
+                                                      rounded
+                                                      transition
+                                                      ease-in-out
+                                                      m-0
+                                                      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
+                                                      <option [value]="l.id" *ngFor="let l of Lateralities">{{l.name}}</option>
+                                                  </select>
+                                                   <!-- Pagination -->
+                                                   <nav class="flex items-center justify-between border-t border-cyan-200 px-4 sm:px-0 mt-4">
+                                                    <div class="-mt-px flex w-0 flex-1">
+                                                      <button (click)="PaginationLateralities(-1)" type="button" [disabled]="previousLateralities === null" class="disabled:opacity-60 disabled:cursor-not-allowed inline-flex items-center border-t-2 border-transparent pt-4 pr-1 text-sm font-medium text-cyan-500 hover:border-cyan-300 hover:text-cyan-700">
+                                                        <!-- Heroicon name: mini/arrow-long-left -->
+                                                        <svg class="mr-3 h-5 w-5 text-cyan-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                          <path fill-rule="evenodd" d="M18 10a.75.75 0 01-.75.75H4.66l2.1 1.95a.75.75 0 11-1.02 1.1l-3.5-3.25a.75.75 0 010-1.1l3.5-3.25a.75.75 0 111.02 1.1l-2.1 1.95h12.59A.75.75 0 0118 10z" clip-rule="evenodd" />
+                                                        </svg>
+                                                        Regresar
+                                                      </button>
+                                                    </div>
+
+                                                    <div class="-mt-px flex w-0 flex-1 justify-end">
+                                                      <button (click)="PaginationLateralities(1)" type="button" [disabled]="nextLateralities === null" class="disabled:opacity-60 disabled:cursor-not-allowed inline-flex items-center border-t-2 border-transparent pt-4 pl-1 text-sm font-medium text-cyan-500 hover:border-cyan-300 hover:text-cyan-700">
+                                                        Siguiente
+                                                        <!-- Heroicon name: mini/arrow-long-right -->
+                                                        <svg class="ml-3 h-5 w-5 text-cyan-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                          <path fill-rule="evenodd" d="M2 10a.75.75 0 01.75-.75h12.59l-2.1-1.95a.75.75 0 111.02-1.1l3.5 3.25a.75.75 0 010 1.1l-3.5 3.25a.75.75 0 11-1.02-1.1l2.1-1.95H2.75A.75.75 0 012 10z" clip-rule="evenodd" />
+                                                        </svg>
+                                                      </button>
+                                                    </div>
+                                                  </nav>
+                                                </div>
+                                              </div>
+
+                                              <button type="button" class="
+                                                disabled:opacity-60
+                                                disabled:cursor-not-allowed
+                                                w-full
+                                                px-6
+                                                py-2.5
+                                                bg-cyan-600
+                                                text-white
+                                                font-medium
+                                                text-xs
+                                                leading-tight
+                                                uppercase
+                                                rounded
+                                                shadow-md
+                                                hover:bg-cyan-700 hover:shadow-lg
+                                                focus:bg-cyan-700 focus:shadow-lg focus:outline-none focus:ring-0
+                                                active:bg-cyan-800 active:shadow-lg
+                                                transition
+                                                duration-150
+                                                ease-in-out"[disabled]="!diagnosticImpresion.length || !laterality.length" (click)="AddCIE10()">Guardar</button>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="px-4 mt-8 sm:px-6 lg:px-8 ">
+            <div class="sm:flex justify-between sm:items-center">
+                <h1 class="text-xl font-bold leading-tight flex flex-nowrap text-secondary cursor-pointer">
+                    Orden médica
+                </h1>
+            </div>
+            <div class="mt-8 flex flex-col">
+
+                <div class="mt-10 sm:mt-0">
+                    <div class="md:grid md:grid-cols-2 md:gap-6">
+
+                        <div class="mt-5 md:mt-0 md:col-span-2">
+                            <div class=" overflow-hidden sm:rounded-md">
+                                <div class="px-4  bg-gray-50 sm:p-6">
+                                    <div class="grid grid-cols-6 gap-6">
+                                        <div class="col-span-6 sm:col-span-6">
+                                          <div>
+                                            <label for="vademecums" class="block text-sm font-semibold text-cyan-700">Vademecum</label>
+                                            <select id="vademecums"  [(ngModel)]="vademecum" name="vademecums" class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                                              <option *ngFor="let v of Vademecums" [ngValue]="v.id">{{v.trade_name}}</option>
+                                            </select>
+                                          </div>
+                                        </div>
+                                        <div class="col-span-6 sm:col-span-6 lg:col-span-2">
+                                            <label for="quantity" class="block text-sm font-semibold text-cyan-600">Cantidad</label>
+                                            <input type="number" name="quantity" [(ngModel)]="quantity" id="quantity" autocomplete="address-level2" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        </div>
+                                        <div class="col-span-6 sm:col-span-6 lg:col-span-2">
+                                          <label for="unit" class="block text-sm font-semibold text-cyan-600">Unidad</label>
+                                          <select id="unit" name="unit" [(ngModel)]="UnitMeasure" class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                                            <option *ngFor="let u of UnitMeasures" [value]="u.id">{{u.name}} </option>
+                                          </select>
+                                          <!-- Pagination -->
+                                          <nav class="flex items-center justify-between border-t border-cyan-200 px-4 sm:px-0 mt-4">
+                                            <div class="-mt-px flex w-0 flex-1">
+                                              <button (click)="PaginationUnitMeasure(-1)" type="button" [disabled]="previousUnitMeasure === null" class="disabled:opacity-60 disabled:cursor-not-allowed inline-flex items-center border-t-2 border-transparent pt-4 pr-1 text-sm font-medium text-cyan-500 hover:border-cyan-300 hover:text-cyan-700">
+                                                <!-- Heroicon name: mini/arrow-long-left -->
+                                                <svg class="mr-3 h-5 w-5 text-cyan-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                  <path fill-rule="evenodd" d="M18 10a.75.75 0 01-.75.75H4.66l2.1 1.95a.75.75 0 11-1.02 1.1l-3.5-3.25a.75.75 0 010-1.1l3.5-3.25a.75.75 0 111.02 1.1l-2.1 1.95h12.59A.75.75 0 0118 10z" clip-rule="evenodd" />
+                                                </svg>
+                                                Regresar
+                                              </button>
+                                            </div>
+
+                                            <div class="-mt-px flex w-0 flex-1 justify-end">
+                                              <button (click)="PaginationUnitMeasure(1)" type="button" [disabled]="nextUnitMeasure === null" class="disabled:opacity-60 disabled:cursor-not-allowed inline-flex items-center border-t-2 border-transparent pt-4 pl-1 text-sm font-medium text-cyan-500 hover:border-cyan-300 hover:text-cyan-700">
+                                                Siguiente
+                                                <!-- Heroicon name: mini/arrow-long-right -->
+                                                <svg class="ml-3 h-5 w-5 text-cyan-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                  <path fill-rule="evenodd" d="M2 10a.75.75 0 01.75-.75h12.59l-2.1-1.95a.75.75 0 111.02-1.1l3.5 3.25a.75.75 0 010 1.1l-3.5 3.25a.75.75 0 11-1.02-1.1l2.1-1.95H2.75A.75.75 0 012 10z" clip-rule="evenodd" />
+                                                </svg>
+                                              </button>
+                                            </div>
+                                          </nav>
+                                        </div>
+                                        <div class="col-span-6 sm:col-span-3 lg:col-span-2">
+                                            <label for="when" class="block text-sm font-semibold text-cyan-600">Cada</label>
+                                            <input type="text" name="when" id="when" [(ngModel)]="every" autocomplete="when" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        </div>
+                                        <div class="col-span-6 sm:col-span-6 lg:col-span-2">
+                                          <label for="time" class="block text-sm font-semibold text-cyan-600">Tiempo</label>
+                                          <select id="time" name="time" [(ngModel)]="TimeMeasure" class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                                            <option *ngFor="let u of TimeMeasures" [value]="u.id">{{u.name}} </option>
+                                          </select>
+                                          <!-- Pagination -->
+                                          <nav class="flex items-center justify-between border-t border-cyan-200 px-4 sm:px-0 mt-4">
+                                            <div class="-mt-px flex w-0 flex-1">
+                                              <button (click)="PaginationTimeMeasure(-1)" type="button" [disabled]="previousTimeMeasure === null" class="disabled:opacity-60 disabled:cursor-not-allowed inline-flex items-center border-t-2 border-transparent pt-4 pr-1 text-sm font-medium text-cyan-500 hover:border-cyan-300 hover:text-cyan-700">
+                                                <!-- Heroicon name: mini/arrow-long-left -->
+                                                <svg class="mr-3 h-5 w-5 text-cyan-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                  <path fill-rule="evenodd" d="M18 10a.75.75 0 01-.75.75H4.66l2.1 1.95a.75.75 0 11-1.02 1.1l-3.5-3.25a.75.75 0 010-1.1l3.5-3.25a.75.75 0 111.02 1.1l-2.1 1.95h12.59A.75.75 0 0118 10z" clip-rule="evenodd" />
+                                                </svg>
+                                                Regresar
+                                              </button>
+                                            </div>
+
+                                            <div class="-mt-px flex w-0 flex-1 justify-end">
+                                              <button (click)="PaginationTimeMeasure(1)" type="button" [disabled]="nextTimeMeasure === null" class="disabled:opacity-60 disabled:cursor-not-allowed inline-flex items-center border-t-2 border-transparent pt-4 pl-1 text-sm font-medium text-cyan-500 hover:border-cyan-300 hover:text-cyan-700">
+                                                Siguiente
+                                                <!-- Heroicon name: mini/arrow-long-right -->
+                                                <svg class="ml-3 h-5 w-5 text-cyan-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                  <path fill-rule="evenodd" d="M2 10a.75.75 0 01.75-.75h12.59l-2.1-1.95a.75.75 0 111.02-1.1l3.5 3.25a.75.75 0 010 1.1l-3.5 3.25a.75.75 0 11-1.02-1.1l2.1-1.95H2.75A.75.75 0 012 10z" clip-rule="evenodd" />
+                                                </svg>
+                                              </button>
+                                            </div>
+                                          </nav>
+                                        </div>
+                                        <div class="col-span-6 sm:col-span-3 lg:col-span-2">
+                                            <label for="until" class="block text-sm font-semibold text-cyan-600">Durante</label>
+                                            <input type="text" name="until" id="until" [(ngModel)]="during" autocomplete="until" class="mt-1 focus:ring-cyan-500 focus:border-cyan-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        </div>
+                                        <div class="col-span-6 sm:col-span-6 lg:col-span-2">
+                                          <label for="period" class="block text-sm font-semibold text-cyan-600">Periodo</label>
+                                          <select id="period" name="period" [(ngModel)]="PeriodMeasure" class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                                            <option *ngFor="let u of PeriodMeasures" [value]="u.id">{{u.name}} </option>
+                                          </select>
+                                          <!-- Pagination -->
+                                          <nav class="flex items-center justify-between border-t border-cyan-200 px-4 sm:px-0 mt-4">
+                                            <div class="-mt-px flex w-0 flex-1">
+                                              <button (click)="PaginationPeriodMeasure(-1)" type="button" [disabled]="previousPeriodMeasure === null" class="disabled:opacity-60 disabled:cursor-not-allowed inline-flex items-center border-t-2 border-transparent pt-4 pr-1 text-sm font-medium text-cyan-500 hover:border-cyan-300 hover:text-cyan-700">
+                                                <!-- Heroicon name: mini/arrow-long-left -->
+                                                <svg class="mr-3 h-5 w-5 text-cyan-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                  <path fill-rule="evenodd" d="M18 10a.75.75 0 01-.75.75H4.66l2.1 1.95a.75.75 0 11-1.02 1.1l-3.5-3.25a.75.75 0 010-1.1l3.5-3.25a.75.75 0 111.02 1.1l-2.1 1.95h12.59A.75.75 0 0118 10z" clip-rule="evenodd" />
+                                                </svg>
+                                                Regresar
+                                              </button>
+                                            </div>
+
+                                            <div class="-mt-px flex w-0 flex-1 justify-end">
+                                              <button (click)="PaginationPeriodMeasure(1)" type="button" [disabled]="nextPeriodMeasure === null" class="disabled:opacity-60 disabled:cursor-not-allowed inline-flex items-center border-t-2 border-transparent pt-4 pl-1 text-sm font-medium text-cyan-500 hover:border-cyan-300 hover:text-cyan-700">
+                                                Siguiente
+                                                <!-- Heroicon name: mini/arrow-long-right -->
+                                                <svg class="ml-3 h-5 w-5 text-cyan-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                  <path fill-rule="evenodd" d="M2 10a.75.75 0 01.75-.75h12.59l-2.1-1.95a.75.75 0 111.02-1.1l3.5 3.25a.75.75 0 010 1.1l-3.5 3.25a.75.75 0 11-1.02-1.1l2.1-1.95H2.75A.75.75 0 012 10z" clip-rule="evenodd" />
+                                                </svg>
+                                              </button>
+                                            </div>
+                                          </nav>
+                                        </div>
+                                        <div class="col-span-6 sm:col-span-6 lg:col-span-2">
+                                          <label for="via" class="block text-sm font-semibold text-cyan-600">Vía</label>
+                                          <select id="via" name="via" [(ngModel)]="ViaMeasure" class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                                            <option *ngFor="let u of ViaMeasures" [value]="u.id">{{u.name}} </option>
+                                          </select>
+                                          <!-- Pagination -->
+                                          <nav class="flex items-center justify-between border-t border-cyan-200 px-4 sm:px-0 mt-4">
+                                            <div class="-mt-px flex w-0 flex-1">
+                                              <button (click)="PaginationViaMeasure(-1)" type="button" [disabled]="previousViaMeasure === null" class="disabled:opacity-60 disabled:cursor-not-allowed inline-flex items-center border-t-2 border-transparent pt-4 pr-1 text-sm font-medium text-cyan-500 hover:border-cyan-300 hover:text-cyan-700">
+                                                <!-- Heroicon name: mini/arrow-long-left -->
+                                                <svg class="mr-3 h-5 w-5 text-cyan-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                  <path fill-rule="evenodd" d="M18 10a.75.75 0 01-.75.75H4.66l2.1 1.95a.75.75 0 11-1.02 1.1l-3.5-3.25a.75.75 0 010-1.1l3.5-3.25a.75.75 0 111.02 1.1l-2.1 1.95h12.59A.75.75 0 0118 10z" clip-rule="evenodd" />
+                                                </svg>
+                                                Regresar
+                                              </button>
+                                            </div>
+
+                                            <div class="-mt-px flex w-0 flex-1 justify-end">
+                                              <button (click)="PaginationViaMeasure(1)" type="button" [disabled]="nextViaMeasure === null" class="disabled:opacity-60 disabled:cursor-not-allowed inline-flex items-center border-t-2 border-transparent pt-4 pl-1 text-sm font-medium text-cyan-500 hover:border-cyan-300 hover:text-cyan-700">
+                                                Siguiente
+                                                <!-- Heroicon name: mini/arrow-long-right -->
+                                                <svg class="ml-3 h-5 w-5 text-cyan-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                  <path fill-rule="evenodd" d="M2 10a.75.75 0 01.75-.75h12.59l-2.1-1.95a.75.75 0 111.02-1.1l3.5 3.25a.75.75 0 010 1.1l-3.5 3.25a.75.75 0 11-1.02-1.1l2.1-1.95H2.75A.75.75 0 012 10z" clip-rule="evenodd" />
+                                                </svg>
+                                              </button>
+                                            </div>
+                                          </nav>
+                                        </div>
+                                        <div class="col-span-6 sm:col-span-6 lg:col-span-2">
+                                          <label for="internal-notes" class="block text-sm font-semibold text-cyan-600">Recomendaciones</label>
+                                          <div class="mt-1">
+                                              <textarea placeholder="Recomendaciones" [(ngModel)]="recommendations" id="about" name="about" rows="1" class="shadow-sm focus:ring-cyan-500 focus:border-cyan-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"></textarea>
+                                          </div>
+                                        </div>
+                                        <div class="col-span-6 sm:col-span-6 lg:col-span-2">
+                                          <label for="internal-notes" class="block text-sm font-semibold text-cyan-600">Observaciones</label>
+                                          <div class="mt-1">
+                                              <textarea placeholder="Observaciones" [(ngModel)]="observations" id="about" name="about" rows="1" class="shadow-sm focus:ring-cyan-500 focus:border-cyan-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"></textarea>
+                                          </div>
+                                        </div>
+                                        <div class="col-span-6">
+                                          <div class="flex justify-end">
+                                            <button type="button" (click)="NewVademecumAppointment()" [disabled]="observations.length === 0 ||recommendations.length === 0 || quantity === 0 || UnitMeasure.length === 0 || every.length === 0 || TimeMeasure.length === 0 || during.length === 0 || PeriodMeasure.length === 0 || ViaMeasure.length === 0" class="disabled:opacity-60 disabled:cursor-none inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white btn-primary hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">Agregar</button>
+                                          </div>
+                                        </div>
+                                        <div class="col-span-6">
+                                            <div class="mt-8 flex flex-col">
+                                                <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                                    <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+                                                        <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+                                                            <table class="min-w-full divide-y divide-gray-300">
+                                                                <thead class="bg-cyan-50">
+                                                                    <tr>
+                                                                        <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-cyan-900 sm:pl-6">Medicamento</th>
+                                                                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-cyan-900">Dosis</th>
+                                                                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-cyan-900">Frecuencia</th>
+                                                                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-cyan-900">Duración</th>
+                                                                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-cyan-900">Via</th>
+                                                                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-cyan-900"></th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody class="divide-y divide-gray-200 bg-white">
+                                                                  <tr *ngFor="let m of Medicines">
+                                                                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{{m.medicine}} </td>
+                                                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{m.quantity}}</td>
+                                                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{m.every}} </td>
+                                                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{m.during}}</td>
+                                                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{m.via_measure}}</td>
+                                                                    <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                                                                      <a (click)="DeleteMedicine(m)" class="text-red-600 hover:text-red-900 cursor-pointer">Eliminar</a>
+                                                                    </td>
+                                                                  </tr>
+
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <!-- ANAMNESIS DOCUMENT UPLOAD -->
+                                        <div class="col-span-6 sm:col-span-6">
+                                          <div class=" overflow-y-auto" *ngIf="successDocUpload === 'false'">
+                                            <ngx-dropzone (change)="onSelectDoc($event)" [multiple]="false" class="mb-3 border-cyan-500">
+                                              <ngx-dropzone-label class="text-cyan-600 font-medium text-sm">Sube un documento u ordenamiento externo! <br>  <small>Solo puedes cargar 1 documento</small> </ngx-dropzone-label>
+                                              <ngx-dropzone-preview *ngFor="let f of docOrders" [removable]="true"   (removed)="onRemovedocOrders(f)">
+                                                    <ngx-dropzone-label class="text-cyan-600 font-medium text-xs">{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                                                </ngx-dropzone-preview>
+                                            </ngx-dropzone>
+                                            <button type="button" (click)="NewAnamnesisDocument()" [disabled]="docOrders.length === 0 || docOrders.length > 1"  class="disabled:cursor-not-allowed disabled:opacity-60 mr-2 justify-end  inline-flex  py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-sky-600 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">Subir documento</button>
+                                          </div>
+                                          <div class="rounded-md bg-green-50 p-4" *ngIf="successDocUpload === 'true'">
+                                            <div class="flex">
+                                              <div class="flex-shrink-0">
+                                                <!-- Heroicon name: mini/check-circle -->
+                                                <svg class="h-5 w-5 text-green-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+                                                </svg>
+                                              </div>
+                                              <div class="ml-3">
+                                                <h3 class="text-sm font-medium text-green-800">Anamensis Cargada</h3>
+                                                <div class="mt-2 text-sm text-green-700">
+                                                  <p>Se ha cargado el archivo , de manera exitosa, Finaliza tu atención o continua con otras indicaciones</p>
+                                                </div>
+                                                <div class="mt-4">
+                                                  <div class="-mx-2 -my-1.5 flex">
+                                                    <button type="button"  class="ml-3 rounded-md bg-green-50 px-2 py-1.5 text-sm font-medium text-green-800 hover:bg-green-100 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2 focus:ring-offset-green-50">Finalizar</button>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="px-4 py-3 bg-gray-50 gap-x-2 text-right sm:px-6">
+                                    <button type="button" [disabled]="sendedInhability === true" (click)="generateInhability = !generateInhability" class="disabled:cursor-not-allowed disabled:opacity-60 mr-2   inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">Generar incapacidad</button>
+                                    <button type="button" [disabled]="internal_notes.length === 0 || reason_for_consultation.length === 0 || recommendations.length === 0 || diagnosis.length === 0 || analysis_and_plan.length === 0 || observations.length === 0" (click)="NewAnamnesis()" class="disabled:cursor-not-allowed disabled:opacity-60   inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white btn-primary hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">Enviar anamnesis</button>
+                                    <button type="button" *ngIf="sendedAnamnesis === true"  (click)="CompleteAppointemt()" class="disabled:cursor-not-allowed disabled:opacity-60 mx-3   inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white btn-primary hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">Finalizar</button>
+                                    <button type="button"  [disabled]="sendedAidsAndOrders === true" (click)="sendAidsAndOrder = !sendAidsAndOrder" class="disabled:cursor-not-allowed mx-2 disabled:opacity-60   inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white btn-primary hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">Sugerir un servicio </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Inhability Modal -->
+<div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true" *ngIf="generateInhability">
+
+
+  <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+
+  <div class="fixed inset-0 z-10 overflow-y-auto">
+    <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+
+      <div class="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6">
+        <div>
+          <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-cyan-100">
+            <!-- Heroicon name: outline/check -->
+
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-cyan-600">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 7.5h-.75A2.25 2.25 0 004.5 9.75v7.5a2.25 2.25 0 002.25 2.25h7.5a2.25 2.25 0 002.25-2.25v-7.5a2.25 2.25 0 00-2.25-2.25h-.75m0-3l-3-3m0 0l-3 3m3-3v11.25m6-2.25h.75a2.25 2.25 0 012.25 2.25v7.5a2.25 2.25 0 01-2.25 2.25h-7.5a2.25 2.25 0 01-2.25-2.25v-.75" />
+            </svg>
+
+          </div>
+          <div class="my-3 text-center sm:mt-5">
+            <h3 class="text-lg font-medium leading-6 text-gray-900" id="modal-title">Crea una incapacidad</h3>
+            <div class="mt-2">
+              <p class="text-sm text-gray-500">Dale una fecha de inicio y una fecha final.</p>
+              <p class="text-XS text-gray-500">Esta incapacidad no es válida en una EPS*</p>
+            </div>
+          </div>
+
+          <div class="mb-2">
+            <label for="start_inhability" class="block text-sm font-medium text-gray-700">Fecha de inicio*</label>
+            <div class="mt-1">
+              <input type="date" [(ngModel)]="start_date" name="start_inhability" id="start_inhability" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="you@example.com">
+            </div>
+          </div>
+
+          <div class="mb-2">
+            <label for="end_inhability" class="block text-sm font-medium text-gray-700">Fecha final*</label>
+            <div class="mt-1">
+              <input type="date" [(ngModel)]="end_date" name="end_inhability" id="end_inhability" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="you@example.com">
+            </div>
+          </div>
+          <div class="mb-2">
+            <label for="observations" class="block text-sm font-medium text-gray-700">Agrega tu observacion</label>
+            <div class="mt-1">
+              <textarea rows="4" [(ngModel)]="incapacity_observations" name="observations" id="observations" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3">
+          <button type="button" (click)="NewInhability()" [disabled]="start_date.length === 0 || end_date.length === 0 || incapacity_observations.length === 0" class="disabled:opacity-60 disabled:cursor-not-allowed   inline-flex w-full justify-center rounded-md border border-transparent bg-cyan-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 sm:col-start-2 sm:text-sm">Finalizar</button>
+          <button type="button" (click)="generateInhability = !generateInhability" class="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 sm:col-start-1 sm:mt-0 sm:text-sm">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Aids and order modal Modal -->
+<div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true" *ngIf="sendAidsAndOrder === true">
+
+
+  <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+
+  <div class="fixed inset-0 z-10 overflow-y-auto">
+    <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+
+      <div class="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6">
+        <div>
+          <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-cyan-100">
+            <!-- Heroicon name: outline/check -->
+
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-cyan-600">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 7.5h-.75A2.25 2.25 0 004.5 9.75v7.5a2.25 2.25 0 002.25 2.25h7.5a2.25 2.25 0 002.25-2.25v-7.5a2.25 2.25 0 00-2.25-2.25h-.75m0-3l-3-3m0 0l-3 3m3-3v11.25m6-2.25h.75a2.25 2.25 0 012.25 2.25v7.5a2.25 2.25 0 01-2.25 2.25h-7.5a2.25 2.25 0 01-2.25-2.25v-.75" />
+            </svg>
+
+
+          </div>
+          <div>
+            <label for="serviceType" class="block text-sm font-medium text-gray-700">Escoge un tipo de servicio</label>
+            <select id="serviceType" [(ngModel)]="service_type" (change)="GetServicesByType()" name="serviceType" class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+              <option *ngFor="let s of serviceTypes" [value]="s.id">{{s.name}}</option>
+
+            </select>
+          </div>
+          <div>
+            <label for="serviceType" class="block text-sm font-medium text-gray-700">Escoge el servicio a ordenar </label>
+            <select id="serviceType" [disabled]="!services.length" [(ngModel)]="service" name="serviceType" class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+              <option *ngFor="let s of services" [value]="s.id">{{s.name}}</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="observations" class="block text-sm font-medium text-gray-700">Agrega tu observacion</label>
+            <div class="mt-1">
+              <textarea rows="4" [(ngModel)]="aids_observations" name="observations" id="observations" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3">
+          <button type="button" (click)="SendAidsAndOrder()" [disabled]="!service_type.length || !services.length || !aids_observations.length" class="disabled:opacity-60 disabled:cursor-not-allowed   inline-flex w-full justify-center rounded-md border border-transparent bg-cyan-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 sm:col-start-2 sm:text-sm">Finalizar</button>
+          <button type="button" (click)="sendAidsAndOrder = !sendAidsAndOrder" class="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 sm:col-start-1 sm:mt-0 sm:text-sm">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- LOADING SCREEN -->
+
+<div *ngIf="loading" wire:loading class="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-gray-700 opacity-75 flex flex-col items-center justify-center">
+  <div class="loader ease-linear rounded-full border-4 border-t-4 border-cyan-200 h-12 w-12 mb-4"></div>
+  <h2 class="text-center text-white text-xl font-semibold">Estamos almacenando el ordenamiento ...</h2>
+  <p class="w-1/3 text-center text-white">Esto puede tomar varios segundos, porfavor no cierre ni refresque esta pantalla.</p>
+</div>

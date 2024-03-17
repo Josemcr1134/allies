@@ -1,0 +1,265 @@
+<!-- Off-canvas menu for mobile, show/hide based on off-canvas menu state. -->
+<div class="fixed inset-0 z-40 flex lg:hidden" role="dialog" aria-modal="true" *ngIf="showMenu">
+    <!--
+    Off-canvas menu overlay, show/hide based on off-canvas menu state.
+
+    Entering: "transition-opacity ease-linear duration-300"
+      From: "opacity-0"
+      To: "opacity-100"
+    Leaving: "transition-opacity ease-linear duration-300"
+      From: "opacity-100"
+      To: "opacity-0"
+  -->
+    <div class="fixed inset-0 bg-gray-600 bg-opacity-75" aria-hidden="true"></div>
+
+    <!--
+    Off-canvas menu, show/hide based on off-canvas menu state.
+
+    Entering: "transition ease-in-out duration-300 transform"
+      From: "-translate-x-full"
+      To: "translate-x-0"
+    Leaving: "transition ease-in-out duration-300 transform"
+      From: "translate-x-0"
+      To: "-translate-x-full"
+  -->
+    <div class="relative flex flex-col flex-1 w-full max-w-xs pt-5 pb-4 bg-cyan-700">
+        <!--
+      Close button, show/hide based on off-canvas menu state.
+
+      Entering: "ease-in-out duration-300"
+        From: "opacity-0"
+        To: "opacity-100"
+      Leaving: "ease-in-out duration-300"
+        From: "opacity-100"
+        To: "opacity-0"
+    -->
+        <div class="absolute top-0 right-0 pt-2 -mr-12">
+            <button type="button" (click)="showMobileMenu()" class="flex items-center justify-center w-10 h-10 ml-1 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                <span class="sr-only">Close sidebar</span>
+                <!-- Heroicon name: outline/x -->
+                <svg class="w-6 h-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+
+        <div class="flex items-center flex-shrink-0 px-4">
+            <img class="w-auto h-8" src="assets/images/logo-netcare-horizontal-nuevo.png" alt="Easywire logo">
+        </div>
+        <nav class="flex-shrink-0 h-full mt-5 overflow-y-auto divide-y divide-cyan-800" aria-label="Sidebar">
+            <div class="px-2 space-y-1">
+                <a *ngIf="SpecialistType !== 3" [routerLink]="['/Home/ControlPanel/Welcome']" routerLinkActive="bg-cyan-800 text-white" class="flex items-center px-2 py-2 text-sm font-medium leading-6 rounded-md text-cyan-100 hover:text-white hover:bg-cyan-600 group" aria-current="page">
+                    <!-- Heroicon name: outline/home -->
+                    <svg class="flex-shrink-0 w-6 h-6 mr-4 text-cyan-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                    </svg> Panel de control
+                </a>
+
+                <a [routerLink]="['/Home/Dates']" routerLinkActive="bg-cyan-800 text-white" class="flex items-center px-2 py-2 text-sm font-medium leading-6 rounded-md text-cyan-100 hover:text-white hover:bg-cyan-600 group">
+                    <!-- Heroicon name: outline/clock -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 w-6 h-6 mr-4 text-cyan-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg> Citas
+                </a>
+
+                <a  *ngIf="SpecialistType !== 3" [routerLink]="['/Home/Products&Services']" routerLinkActive="bg-cyan-800 text-white" class="flex items-center px-2 py-2 text-sm font-medium leading-6 rounded-md text-cyan-100 hover:text-white hover:bg-cyan-600 group">
+                    <!-- Heroicon name: outline/scale -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 w-6 h-6 mr-4 text-cyan-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                    </svg> Productos y Servicios
+                </a>
+
+                <a [routerLink]="['/Home/Discounts']" class="flex items-center px-2 py-2 text-sm font-medium leading-6 rounded-md text-cyan-100 hover:text-white hover:bg-cyan-600 group">
+                    <!-- Heroicon name: outline/credit-card -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 w-6 h-6 mr-4 text-cyan-200" viewBox="0 0 19.774 19.774">
+                        <g id="Grupo_923" data-name="Grupo 923" transform="translate(-594.156 -142.156)">
+                            <path id="Trazado_2175" data-name="Trazado 2175" d="M742.045,262.01a2.78,2.78,0,0,1,.146-.408q2.038-3.783,4.084-7.561a.784.784,0,0,1,.812-.453.722.722,0,0,1,.639.642,1.127,1.127,0,0,1-.132.579c-.955,1.79-1.923,3.573-2.888,5.358-.388.718-.774,1.438-1.167,2.154a.757.757,0,0,1-1,.4A.81.81,0,0,1,742.045,262.01Z" transform="translate(-140.786 -106.07)" fill="#a5f3fc"/>
+                            <path id="Trazado_2176" data-name="Trazado 2176" d="M710.711,260.412a1.581,1.581,0,1,1-1.584,1.578A1.6,1.6,0,0,1,710.711,260.412Z" transform="translate(-109.449 -112.576)" fill="#a5f3fc"/>
+                            <path id="Trazado_2177" data-name="Trazado 2177" d="M830.615,372.18a1.581,1.581,0,1,1-1.578-1.584A1.6,1.6,0,0,1,830.615,372.18Z" transform="translate(-222.091 -217.467)" fill="#a5f3fc"/>
+                            <path id="Trazado_2178" data-name="Trazado 2178" d="M604.043,142.156a9.887,9.887,0,1,0,9.887,9.887A9.887,9.887,0,0,0,604.043,142.156Zm0,18.533a8.646,8.646,0,1,1,8.646-8.646A8.646,8.646,0,0,1,604.043,160.689Z" transform="translate(0 0)" fill="#a5f3fc"/>
+                        </g>
+                    </svg> Descuentos
+                </a>
+
+                <a  *ngIf="SpecialistType !== 3" [routerLink]="['/Home/Affiliates']" routerLinkActive="bg-cyan-800 text-white" class="flex items-center px-2 py-2 text-sm font-medium leading-6 rounded-md text-cyan-100 hover:text-white hover:bg-cyan-600 group">
+                    <!-- Heroicon name: outline/user-group -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 w-6 h-6 mr-4 text-cyan-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 21h7a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v11m0 5l4.879-4.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242z" />
+                    </svg> Consultas de afiliados
+                </a>
+
+                <a *ngIf="SpecialistType === 2" [routerLink]="['/Home/Users']" routerLinkActive="bg-cyan-800 text-white" class="flex items-center px-2 py-2 text-sm font-medium leading-6 rounded-md text-cyan-100 hover:text-white hover:bg-cyan-600 group">
+                    <!-- Heroicon name: outline/document-report -->
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 w-6 h-6 mr-4 text-cyan-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg> Usuarios
+                </a>
+            </div>
+            <div class="pt-6 mt-6" *ngIf="SpecialistType !== 3 ">
+                <div class="px-2 space-y-1">
+                    <a [routerLink]="['/Home/Wallet']" routerLinkActive="bg-cyan-800 text-white" class="flex items-center px-2 py-2 text-sm font-medium leading-6 rounded-md group text-cyan-100 hover:text-white hover:bg-cyan-600">
+                        <!-- Heroicon name: outline/cog -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-4 text-cyan-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                        </svg> Wallet
+                    </a>
+                    <a [routerLink]="['/Home/Configs']" routerLinkActive="bg-cyan-800 text-white" class="flex items-center px-2 py-2 text-sm font-medium leading-6 rounded-md group text-cyan-100 hover:text-white hover:bg-cyan-600">
+                        <!-- Heroicon name: outline/cog -->
+                        <svg class="w-6 h-6 mr-4 text-cyan-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg> Configuración de agendas y horarios
+                    </a>
+
+
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="flex-shrink-0 w-14" aria-hidden="true">
+        <!-- Dummy element to force sidebar to shrink to fit close icon -->
+    </div>
+</div>
+
+<!-- Header -->
+<div class="relative z-10 flex flex-shrink-0 h-16 bg-white border-b border-gray-200 lg:border-none">
+    <button (click)="showMobileMenu()" type="button" class="px-4 text-gray-400 border-r border-gray-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-500 lg:hidden">
+        <span class="sr-only">Open sidebar</span>
+        <!-- Heroicon name: outline/menu-alt-1 -->
+        <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+        </svg>
+    </button>
+    <!-- Search bar -->
+    <div class="flex justify-between flex-1 px-4 sm:px-6 lg:max-w-8xl lg:mx-auto lg:px-8">
+        <div class="flex flex-1">
+
+        </div>
+        <div class="flex items-center ml-4 md:ml-6">
+            <button type="button" class="p-1 text-gray-400 bg-white rounded-full hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">
+                <span class="sr-only">View notifications</span>
+                <!-- Heroicon name: outline/bell -->
+                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                </svg>
+            </button>
+
+            <!-- Profile dropdown -->
+            <div class="relative ml-3">
+                <div>
+                    <button (click)="showUserMenu()" type="button" class="flex items-center max-w-xs text-sm bg-white rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 lg:p-2 lg:rounded-md lg:hover:bg-gray-50" id="user-menu-button" aria-expanded="false"
+                        aria-haspopup="true">
+                        <img *ngIf="avatarPath.length > 4" class="hidden h-8 w-8 rounded-full sm:block" [src]="avatarPath" alt="">
+                        <img *ngIf="avatarPath.length === 4 " class="hidden h-8 w-8 rounded-full sm:block" src="assets/images/user.jpg" alt="xxxx">
+                        <span class="hidden ml-3 text-sm font-medium text-gray-700 lg:block"><span class="sr-only">Open user menu for </span>{{username}}</span>
+                        <!-- Heroicon name: solid/chevron-down -->
+                        <svg class="flex-shrink-0 hidden w-5 h-5 ml-1 text-gray-400 lg:block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                </div>
+                <div *ngIf="userMenu" class="absolute right-0 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                    <a (click)="ShowChangePasswordModal()" class="block px-4 py-2 text-sm text-center text-gray-700 cursor-pointer hover:bg-gray-50 hover:text-black" role="menuitem" tabindex="-1" id="user-menu-item-0">Cambiar contraseña</a>
+                    <a (click)="ShowChangeLogoModal()" class="block px-4 py-2 text-sm text-center text-gray-700 cursor-pointer hover:bg-gray-50 hover:text-black" role="menuitem" tabindex="-1" id="user-menu-item-0">Cambiar Avatar</a>
+
+                    <a href="#" class="block px-4 py-2 text-sm text-center text-gray-700 cursor-pointer hover:bg-gray-50 hover:text-black" role="menuitem" tabindex="-1" id="user-menu-item-2">Cerrar sesión</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Change password modal-->
+<div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true" *ngIf="changePassword === true">
+
+    <div class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75"></div>
+
+    <div class="fixed inset-0 z-10 overflow-y-auto">
+        <div class="flex items-end justify-center min-h-full p-4 text-center sm:items-center sm:p-0">
+            <div class="relative px-4 pt-5 pb-4 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl sm:my-8 sm:max-w-sm sm:w-full sm:p-6">
+                <div>
+                    <div class="flex items-center justify-center w-12 h-12 mx-auto rounded-full bg-cyan-100">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-cyan-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
+                        </svg>
+                    </div>
+                    <div class="mt-3 text-center sm:mt-5">
+                        <h3 class="text-lg font-medium leading-6 text-gray-900" id="modal-title">Cambia tu contraseña</h3>
+                        <p class="mt-2 text-sm text-gray-500">Mínimo 8 caracteres, no debe coincidir en ningun momento al correo y ni usuario, debe ser alfanumerica</p>
+
+                        <div class="mt-3">
+                            <div class="mb-2">
+                                <label for="password" class="block text-sm font-medium text-left text-gray-600">Nueva contraseña</label>
+                                <div class="relative mt-1 rounded-md shadow-sm">
+                                    <input type="password" name="password" id="password" [(ngModel)]="password" [ngClass]="{'border-red-300 text-red-900 placeholder-red-300 focus:ring-red-500 focus:border-red-500' : !samePassword}" class="block w-full pr-10 rounded-md focus:outline-none sm:text-sm"
+                                        aria-invalid="true" aria-describedby="password-error">
+                                    <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                                        <!-- Heroicon name: solid/exclamation-circle -->
+                                        <svg class="w-5 h-5 text-red-500" *ngIf="!samePassword" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="repeat_password" class="block text-sm font-medium text-left text-gray-600">Repite la contraseña</label>
+                                <div class="relative mt-1 rounded-md shadow-sm">
+                                    <input type="password" name="repeat_password" id="repeat_password" [(ngModel)]="password2" (keyup)="VerifySamePasswords()" [ngClass]="{'border-red-300 text-red-900 placeholder-red-300 focus:ring-red-500 focus:border-red-500' : !samePassword}"
+                                        class="block w-full pr-10 rounded-md focus:outline-none sm:text-sm" aria-invalid="true" aria-describedby="password-error">
+                                    <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                                        <!-- Heroicon name: solid/exclamation-circle -->
+                                        <svg class="w-5 h-5 text-red-500" *ngIf="!samePassword" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <p class="mt-2 text-sm text-left text-red-600" *ngIf="!samePassword" id="repeat_password">Las contraseñas no corresponden.</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 gap-4 mt-5 sm:mt-6 md:grid-cols-2">
+                    <button type="button" (click)="ShowChangePasswordModal()" class="inline-flex justify-center w-full px-4 py-2 text-base font-medium text-white bg-gray-400 border border-transparent rounded-md shadow-sm disabled:opacity-60 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-600 sm:text-sm">Cancelar</button>
+                    <button type="button" (click)="ChangePassword()" [disabled]="!samePassword" class="inline-flex justify-center w-full px-4 py-2 text-base font-medium text-white border border-transparent rounded-md shadow-sm disabled:opacity-60 bg-cyan-700 hover:bg-cyan-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-600 sm:text-sm">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Change logo modal -->
+
+<div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true" *ngIf="changeLogo === true">
+
+    <div class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75"></div>
+
+    <div class="fixed inset-0 z-10 overflow-y-auto">
+        <div class="flex items-end justify-center min-h-full p-4 text-center sm:items-center sm:p-0">
+            <div class="relative px-4 pt-5 pb-4 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl sm:my-8 sm:max-w-sm sm:w-full sm:p-6">
+                <div>
+                    <div class="flex items-center justify-center w-12 h-12 mx-auto rounded-full bg-cyan-100">
+                        <img *ngIf="avatarPath.length > 4" class="hidden h-12 w-12 rounded-full sm:block" [src]="avatarPath" alt="">
+                        <img *ngIf="avatarPath.length === 4 " class="hidden h-12 w-12 rounded-full sm:block" src="assets/images/user.jpg" alt="xxxx">
+                    </div>
+                    <div class="mt-3 text-center sm:mt-5">
+                        <h3 class="text-lg font-medium leading-6 text-cyan-900 mb-4" id="modal-title">Cambia tu Avatar</h3>
+                        <ngx-dropzone (change)="onSelectAvatar($event)" class="mb-3 border-cyan-500">
+                            <ngx-dropzone-label class="text-cyan-600 font-medium text-xs">Agregue o arraste su Avatar aquí</ngx-dropzone-label>
+                            <ngx-dropzone-image-preview *ngFor="let f of Avatar" [file]="f" [removable]="true" (removed)="onRemoveAvatar(f)">
+                            </ngx-dropzone-image-preview>
+                        </ngx-dropzone>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 gap-4 mt-5 sm:mt-6 md:grid-cols-2">
+                    <button type="button" (click)="ShowChangeLogoModal()" class="inline-flex justify-center w-full px-4 py-2 text-base font-medium text-white bg-gray-400 border border-transparent rounded-md shadow-sm disabled:opacity-60 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-600 sm:text-sm">Cancelar</button>
+                    <button type="button" (click)="chargeAvatar()" class="inline-flex justify-center w-full px-4 py-2 text-base font-medium text-white border border-transparent rounded-md shadow-sm disabled:opacity-60 bg-cyan-700 hover:bg-cyan-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-600 sm:text-sm">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

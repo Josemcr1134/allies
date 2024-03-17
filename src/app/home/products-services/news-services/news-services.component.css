@@ -1,0 +1,4 @@
+ngx-dropzone { 
+    border: 1px dashed !important ;
+    border-color: rgb(14 116 144 / var(--tw-border-opacity)) !important;
+}
